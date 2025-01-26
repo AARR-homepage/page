@@ -236,18 +236,19 @@ a:hover {
         <label for="pollDuration">開催期間 (1/4/8/24/72/168/336):</label>
         <input type="number" id="pollDuration" value="1" placeholder="例: 24" class="poll-input">
     </div>
-
+ <br>
     <label for="inputRandom">発言の最後にランダムな文字を追加:</label>
      <input type="checkbox" id="inputRandom" style="transform: scale(1.5); margin-right: 0px;">
-
+ <br>
     <label for="autoDelayCheckbox">自動遅延調節:</label>
      <input type="checkbox" id="autoDelayCheckbox" style="transform: scale(1.5); margin-right: 0px;">
-
+ <br>
 <label for="startDelay">送信開始までの時間 (分後):</label>
 <input type="number" id="startDelay" name="startDelay" value="0" min="0">
        <button id="sayButton">送信開始(⚠️連打するとリクエストが2倍になります)</button>
        <button id="typingButton">入力中</button>
    </div>
+   <p>リアクション設定</p>
     <div class="card">
         <label for="reactionEmojis">リアクション絵文字:</label>
         <textarea id="reactionEmojis" placeholder="リアクションする絵文字をカンマ(,)区切りで入力"></textarea>
@@ -255,6 +256,7 @@ a:hover {
         <input type="number" id="reactionDelay" value="1000" min="0">
          <button id="reactButton">リアクション送信開始</button>
     </div>
+    <p>スレッド設定</p>
     <div class="card">
         <label for="threadTitle">スレッドタイトル:</label>
         <input type="text" id="threadTitle" placeholder="スレッドのタイトルを入力" class="thread-input">
@@ -277,6 +279,7 @@ a:hover {
         <button onclick="createThreads()">スレッド送信開始</button>
     </div>
     <br>
+   <p>イベント設定</p>
     <div class="card">
         <p>イベント作成</p>
         <p>⚠️エクスプレッション権限に未対応</p>
@@ -316,7 +319,7 @@ a:hover {
         <div id="status"></div>
     </div>
     
-
+<p>絵文字設定</p>
      <div class="container">
             <form id="emojiForm">
             <br>
