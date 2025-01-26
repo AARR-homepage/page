@@ -196,17 +196,20 @@ a:hover {
            <button id="copyChannelId">コピー</button>
            <button id="clearChannelId">クリア</button>
        </div>
-       <div class="card">
-           <label for="inputUserId">ユーザーID:</label>
-           <textarea id="inputUserId" placeholder="メンションするユーザーのIDを改行で区切って入力"></textarea>
-           <button id="fetchUserIds">アクティブユーザーID/チャンネル/メッセージID取得</button>
-<p>⚠️サーバーIDの入力が必要</p>
-       </div>
-    
    <div class="card"> 
       <label for="blacklistUID">ブラックリストUID:</label> 
       <textarea id="blacklistUID" placeholder="メンションしないユーザーのIDを改行で区切って入力"></textarea> 
    </div>
+       <div class="card">
+           <label for="inputUserId">ユーザーID:</label>
+           <textarea id="inputUserId" placeholder="メンションするユーザーのIDを改行で区切って入力"></textarea>
+<div class="card">
+        <label for="messageIds">リアクションメッセージID:</label>
+        <textarea id="messageIds" placeholder="メッセージIDを改行で区切って入力"></textarea>
+           <button id="fetchUserIds">アクティブユーザーID/チャンネル/リアクションメッセージID取得</button>
+<p>⚠️サーバーIDの入力が必要</p>
+       </div>
+
    
        <div class="card">
            <label for="inputContent">発言内容:</label>
@@ -255,17 +258,6 @@ a:hover {
        <button id="sayButton">送信開始(⚠️連打するとリクエストが2倍になります)</button>
        <button id="typingButton">入力中</button>
    </div>
-   
- <div class="card">
-        <label for="messageIds">リアクションメッセージID:</label>
-        <textarea id="messageIds" placeholder="メッセージIDを改行で区切って入力"></textarea>
-   
-    <label for="serverId">リアクションサーバーID:</label>
-    <input type="text" id="serverId" placeholder="DiscordサーバーIDを入力">
-     </div>
-    <button id="fetchUserIds">リアクションメッセージID取得</button>
-
-   <p>⚠️サーバーIDの入力が必要</p>
     <div class="card">
         <label for="reactionEmojis">リアクション絵文字:</label>
         <textarea id="reactionEmojis" placeholder="リアクションする絵文字をカンマ(,)区切りで入力"></textarea>
