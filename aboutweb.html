@@ -169,16 +169,15 @@ a:hover {
 </div>
 
        </div>
+    <p>主要設定</p>
        <div class="card">
            <label for="tokenField">トークン:</label>
            <textarea id="tokenField" placeholder="ユーザートークンを改行で区切って入力"></textarea>
-       </div>
-       <div class="card">
+<br>
     <label for="serverId">サーバーID:</label>
     <input type="text" id="serverId" placeholder="DiscordサーバーIDを入力">
     <button id="showWidget">IDからウィジェットを表示</button>
 </div>
-
 <div class="card" id="widgetContainer" style="margin-top: 20px; display: none;">
     <h3>サーバーウィジェット</h3>
     <iframe id="discordWidget" 
@@ -189,7 +188,7 @@ a:hover {
             sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts">
     </iframe>
 </div>
-  
+  <p>ID設定</p>
    <div class="card"> 
       <label for="blacklistUID">非メンションブラックリストユーザーID:</label> 
       <textarea id="blacklistUID" placeholder="メンションしないユーザーのIDを改行で区切って入力"></textarea> 
@@ -208,8 +207,7 @@ a:hover {
       <br>
 <p>⚠️サーバーIDの入力が必要</p>
        </div>
-
-   
+    <p>メッセージ設定</p>
        <div class="card">
            <label for="inputContent">発言内容:</label>
            <textarea id="inputContent" placeholder="発言する内容を入力(空の場合は点呼)"></textarea>
