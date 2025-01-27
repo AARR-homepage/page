@@ -203,16 +203,17 @@ button:disabled {
     <p>主要設定</p>
     <label for="tokenField">トークン:</label>
     <textarea id="tokenField" placeholder="ユーザートークンを改行で区切って入力"></textarea>
-    <br>
-    <label for="serverId">サーバーID:</label>
-    <input type="text" id="serverId" placeholder="DiscordサーバーIDを入力">
-    <button id="showWidget">IDからウィジェットを表示</button>
+  
 </div>
 <div class="button-container">
-<button onclick="toggleVisibility('idSettings')">ID設定表示/非表示</button>
+<button onclick="toggleVisibility('idSettings')">ID設定</button>
 </div>
 <div id="idSettings" class="card">
     <p>ID設定</p>
+    <label for="serverId">サーバーID:</label>
+    <input type="text" id="serverId" placeholder="DiscordサーバーIDを入力">
+    <button id="showWidget">IDからウィジェットを表示</button>
+    <br>
     <label for="blacklistUID">非メンションブラックリストユーザーID:</label> 
     <textarea id="blacklistUID" placeholder="メンションしないユーザーのIDを改行で区切って入力"></textarea> 
     <br>
