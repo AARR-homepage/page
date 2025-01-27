@@ -188,7 +188,7 @@ button:disabled {
 <button onclick="toggleVisibility('idSettings')">ID設定</button>
 </div>
 <div id="idSettings" class="card">
-    <p>ID設定</p>
+    <h3>ID設定</h3>
     <label for="serverId">サーバーID:</label>
     <input type="text" id="serverId" placeholder="DiscordサーバーIDを入力">
     <button id="showWidget">IDからウィジェットを表示</button>
@@ -214,7 +214,7 @@ button:disabled {
 <button onclick="toggleVisibility('messageSettings')">メッセージ設定</button>
 </div>
 <div id="messageSettings" class="card">
-    <p>メッセージ設定</p>
+    <h3>メッセージ設定</h3>
     <label for="inputContent">発言内容:</label>
     <textarea id="inputContent" placeholder="発言する内容を入力(空の場合は点呼)"></textarea>
     <button id="copyContent">コピー</button>
@@ -258,7 +258,7 @@ button:disabled {
 <button onclick="toggleVisibility('reactionSettings')">リアクション設定</button>
 </div>
 <div id="reactionSettings" class="card">
-    <p>リアクション設定</p>
+    <h3>リアクション設定</h3>
     <label for="reactionEmojis">リアクション絵文字(,):</label>
     <textarea id="reactionEmojis" placeholder="リアクションする絵文字をカンマ(,)区切りで入力"></textarea>
     <label for="reactionDelay">リアクション遅延(ミリ秒):</label>
@@ -269,7 +269,7 @@ button:disabled {
 <button onclick="toggleVisibility('threadSettings')">スレッド設定</button>
 </div>
 <div id="threadSettings" class="card">
-    <p>スレッド設定</p>
+    <h3>スレッド設定</h3>
     <label for="threadTitle">スレッドタイトル:</label>
     <input type="text" id="threadTitle" placeholder="スレッドのタイトルを入力" class="thread-input">
     <br>
@@ -294,7 +294,7 @@ button:disabled {
 <button onclick="toggleVisibility('eventSettings')">イベント設定</button>
 </div>
 <div id="eventSettings" class="card">
-    <p>イベント設定</p>
+    <h3>イベント設定</h3>
     <p>イベント作成</p>
     <p>⚠️実験中機能 エクスプレッション権限に未対応</p>
     <div class="form-group">
@@ -339,7 +339,7 @@ button:disabled {
     <p>絵文字設定</p>
     <div class="container">
         <form id="emojiForm">
-            <p>絵文字追加</p>
+            <h3>絵文字追加</h3>
             <p>⚠️実験中機能 エクスプレッション権限に未対応</p>
             <label for="guildId">サーバーID (Guild ID):</label>
             <input type="text" id="guildId" name="guildId" required>
@@ -375,7 +375,7 @@ button:disabled {
     <h2>AARR joiner拡張機能</h2>
     <p>tokenのjoinは規制が強い為AARR製拡張機能をインストールして行ってください</p>
     <p>拡張機能を使う事で簡単にtoken joinが出来ます</p>
-    <p>複数の垢を反手動で操作する新しい仕組みによりどんなサーバーでも確実にjoin/認証を行う事が出来ます</p>
+    <p>複数の垢を半手動で操作する新しい仕組みによりどんなサーバーでも確実にcaptcha対策/認証を行う事が出来ます</p>
     <a href="https://www.tampermonkey.net/" target="_blank">①tampermonkey [必須]</a><br>
     <a href="https://greasyfork.org/ja/scripts/523829-manage-multi-discord-accounts/code" target="_blank">②複垢TOKENログイン拡張機能 [推奨]</a><br>
     <h5>token join参考動画</h5>
