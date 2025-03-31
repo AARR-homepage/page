@@ -252,7 +252,7 @@ async function monitorAndSendValidationMessages(headers, validationResults, send
 <h1>AARR DM Bot Requester</h1>
 <form id="monitorForm">
     <p>このツールは、<a href="https://discord.gg/kC2Nf6tgmd" target="_blank">DMbotサーバー</a>で使用する為のツールです</p>
- 
+
     <h2>主要設定</h2>
     <label for="token">トークン:</label><br>
     <input type="text" id="token" name="token"><br><br>
@@ -266,11 +266,11 @@ async function monitorAndSendValidationMessages(headers, validationResults, send
     <label for="additionalMessage">追加メッセージ (コマンド):</label><br>
     <input type="text" id="additionalMessage" name="additionalMessage"><br><br>
 
-    <label for="interval">複数チャンネル毎のコマンド送信間隔 (ミリ秒):</label><br>
-    <input type="number" id="interval" name="interval" value="60000"><br><br>
-    
+    <label for="interval">チャンネルの間隔 (ミリ秒):</label><br>
+    <input type="number" id="interval" name="interval" value="6000"><br><br>
+
     <label for="sendDelay">コマンドの送信間隔 (ミリ秒):</label><br>
-    <input type="number" id="sendDelay" name="sendDelay" value="0"><br><br>
+    <input type="number" id="sendDelay" name="sendDelay" value="60000"><br><br>
 
     <label for="repetitions">コマンド送信回数:</label><br>
     <input type="number" id="repetitions" name="repetitions" value="1"><br><br>
@@ -290,7 +290,7 @@ async function monitorAndSendValidationMessages(headers, validationResults, send
 
     <label for="delay">遅延 (チャンネル監視):</label><br>
     <input type="number" id="delay" name="delay" value="60000"><br><br>
-    
+
     <button type="button" onclick="startMonitoring()">join監視開始</button>
 
     <h2>検証</h2>
@@ -309,10 +309,12 @@ async function monitorAndSendValidationMessages(headers, validationResults, send
 検証結果:
 <div id="validationResults"></div>
     <label for="userSendDelay">ユーザーごとのコマンド送信遅延 (ミリ秒):</label><br>
-    <input type="number" id="userSendDelay" name="userSendDelay" value="0"><br><br>
+    <input type="number" id="userSendDelay" name="userSendDelay" value="60000"><br><br>
 
 <button type="button" onclick="sendValidationMessages()">検証結果のuseridを使って送信を開始</button>
 
 <div id="status"></div>
+</body>
+</html>
 </body>
 </html>
