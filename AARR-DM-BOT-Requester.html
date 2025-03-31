@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AARR DM BOT Requester</title>
+    <meta name="description" content="DM BOT要請ツールです">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#FF0000">
+    <meta property="og:url" content="">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="AARR DM BOT Requester">
+    <meta property="og:description" content="DM BOT要請ツールです">
+    <meta property="og:site_name" content="荒らし連合軍">
+    <meta property="og:image" content="https://i.imgur.com/JTkB9AC.png">
+    <style>
+body {
+    font-family: Arial, sans-serif;
+    background-color: #0f0f0f;
+    color: #fff;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    max-width: 400px;
+}
+
+label {
+    margin-top: 10px;
+    color: #fff;
+}
+
+input, textarea {
+    width: 100%; 
+    max-width: 400px;
+    margin-top: 5px;
+    padding: 10px; 
+    font-size: 16px;
+    background-color: #333; 
+    border: 1px solid #ccc; 
+    border-radius: 0; 
+    color: white; 
+    outline: none;
+}
+
+textarea {
+    height: 100px; 
+}
+
+button {
+    cursor: pointer;
+    background-color: #333333;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 0px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    background-color: #45a049;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+button:active {
+    background-color: #2e8b57;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transform: scale(0.98);
+}
+
+body, h1, p, label, a, button {
+    color: white;
+}
+
+#status {
+    width: 100%; 
+    max-width: 400px;
+    height: 150px; 
+    margin-top: 20px; 
+    padding: 10px; 
+    border: 1px solid #ccc; 
+    background-color: #333; 
+    color: white; 
+    overflow-y: scroll; 
+    white-space: pre-wrap; 
+}
+
+#validationResults {
+    width: 100%; 
+    max-width: 400px;
+    height: 150px; 
+    margin-top: 20px; 
+    padding: 10px; 
+    border: 1px solid #ccc; 
+    background-color: #333; 
+    color: white; 
+    overflow-y: scroll; 
+    white-space: pre-wrap; 
+}
+    </style>
+  <script>
+/***************************************************************************/
+var _$_6446=["DOMContentLoaded","beforeunload","addEventListener","input, textarea","querySelectorAll","id","value","setItem","forEach","getItem","token","getElementById","serverId","monitorChannelId","trim","","filter","\x0A","split","userIds","sendChannelIds","additionalMessage","delay","userSendDelay","length","Please fill in all required fields with valid values.","application/json","comparisonIds","validationIds","includes","validationResults","textContent","join","interval","repetitions","sendDelay","/messages?limit=100","json","author"," ","/messages","POST","stringify","status"," for user ","n","Error fetching or sending messages:","error","message"," (Repetition ",")n","Error sending messages:"];document[_$_6446[2]](_$_6446[0],()=>{loadContent();window[_$_6446[2]](_$_6446[1],saveContent)});function saveContent(){const inputs=document[_$_6446[4]](_$_6446[3]);inputs[_$_6446[8]]((input)=>{localStorage[_$_6446[7]](input[_$_6446[5]],input[_$_6446[6]])})}function loadContent(){const inputs=document[_$_6446[4]](_$_6446[3]);inputs[_$_6446[8]]((input)=>{if(localStorage[_$_6446[9]](input[_$_6446[5]])){input[_$_6446[6]]= localStorage[_$_6446[9]](input[_$_6446[5]])}})}let validationResults=[];async function startMonitoring(){saveContent();const token=document[_$_6446[11]](_$_6446[10])[_$_6446[6]];const serverId=document[_$_6446[11]](_$_6446[12])[_$_6446[6]];const monitorChannelId=document[_$_6446[11]](_$_6446[13])[_$_6446[6]];const userIds=document[_$_6446[11]](_$_6446[19])[_$_6446[6]][_$_6446[18]](_$_6446[17])[_$_6446[16]]((id)=>{return id[_$_6446[14]]()!== _$_6446[15]});const sendChannelIds=document[_$_6446[11]](_$_6446[20])[_$_6446[6]][_$_6446[18]](_$_6446[17])[_$_6446[16]]((id)=>{return id[_$_6446[14]]()!== _$_6446[15]});const additionalMessage=document[_$_6446[11]](_$_6446[21])[_$_6446[6]];const delay=parseInt(document[_$_6446[11]](_$_6446[22])[_$_6446[6]],10);const userSendDelay=parseInt(document[_$_6446[11]](_$_6446[23])[_$_6446[6]],10);if(!token||  !serverId ||  !monitorChannelId || userIds[_$_6446[24]]=== 0 || sendChannelIds[_$_6446[24]]=== 0 || isNaN(delay) || delay<= 0 || isNaN(userSendDelay) || userSendDelay< 0){alert(_$_6446[25]);return};const headers={'Authorization':(""+token+_$_6446[15]),'Content-Type':_$_6446[26]};setInterval(async ()=>{ await monitorAndSendMessages(headers,monitorChannelId,userIds,sendChannelIds,additionalMessage,userSendDelay)},delay)}async function startValidationMonitoring(){saveContent();const comparisonIds=document[_$_6446[11]](_$_6446[27])[_$_6446[6]][_$_6446[18]](_$_6446[17])[_$_6446[16]]((id)=>{return id[_$_6446[14]]()!== _$_6446[15]});const validationIds=document[_$_6446[11]](_$_6446[28])[_$_6446[6]][_$_6446[18]](_$_6446[17])[_$_6446[16]]((id)=>{return id[_$_6446[14]]()!== _$_6446[15]});if(comparisonIds[_$_6446[24]]=== 0|| validationIds[_$_6446[24]]=== 0){alert(_$_6446[25]);return};validationResults= comparisonIds[_$_6446[16]]((id)=>{return validationIds[_$_6446[29]](id)});displayValidationResults(validationResults)}function displayValidationResults(results){const validationResultsContainer=document[_$_6446[11]](_$_6446[30]);validationResultsContainer[_$_6446[31]]= results[_$_6446[32]](_$_6446[17])}async function sendValidationMessages(){const token=document[_$_6446[11]](_$_6446[10])[_$_6446[6]];const sendChannelIds=document[_$_6446[11]](_$_6446[20])[_$_6446[6]][_$_6446[18]](_$_6446[17])[_$_6446[16]]((id)=>{return id[_$_6446[14]]()!== _$_6446[15]});const additionalMessage=document[_$_6446[11]](_$_6446[21])[_$_6446[6]];const interval=parseInt(document[_$_6446[11]](_$_6446[33])[_$_6446[6]],10);const repetitions=parseInt(document[_$_6446[11]](_$_6446[34])[_$_6446[6]],10);const sendDelay=parseInt(document[_$_6446[11]](_$_6446[35])[_$_6446[6]],10);const userSendDelay=parseInt(document[_$_6446[11]](_$_6446[23])[_$_6446[6]],10);if(!token|| sendChannelIds[_$_6446[24]]=== 0 || isNaN(interval) || interval<= 0 || isNaN(repetitions) || repetitions<= 0 || isNaN(sendDelay) || sendDelay<= 0 || isNaN(userSendDelay) || userSendDelay< 0){alert(_$_6446[25]);return};const headers={'Authorization':(""+token+_$_6446[15]),'Content-Type':_$_6446[26]}; await monitorAndSendValidationMessages(headers,validationResults,sendChannelIds,additionalMessage,interval,repetitions,sendDelay,userSendDelay)}async function monitorAndSendMessages(headers,monitorChannelId,userIds,sendChannelIds,additionalMessage,userSendDelay){try{const response= await fetch(("https://discord.com/api/v9/channels/"+monitorChannelId+_$_6446[36]),{headers});const messages= await response[_$_6446[37]]();for(const message of messages){if(userIds[_$_6446[29]](message[_$_6446[38]][_$_6446[5]])){for(const sendChannelId of sendChannelIds){const content=("!chicken "+message[_$_6446[38]][_$_6446[5]]+_$_6446[39]+additionalMessage+_$_6446[15]); await  new Promise((resolve)=>{return setTimeout(resolve,userSendDelay)}); await fetch(("https://discord.com/api/v9/channels/"+sendChannelId+_$_6446[40]),{method:_$_6446[41],headers,body:JSON[_$_6446[42]]({content})});document[_$_6446[11]](_$_6446[43])[_$_6446[31]]+= ("Sent message to "+sendChannelId+_$_6446[44]+message[_$_6446[38]][_$_6446[5]]+_$_6446[45])}}}}catch(error){console[_$_6446[47]](_$_6446[46],error);document[_$_6446[11]](_$_6446[43])[_$_6446[31]]+= ("Error: "+error[_$_6446[48]]+_$_6446[45])}}async function monitorAndSendValidationMessages(headers,validationResults,sendChannelIds,additionalMessage,interval,repetitions,sendDelay,userSendDelay){try{for(let j=0;j< validationResults[_$_6446[24]];j++){const comparisonId=validationResults[j];for(const sendChannelId of sendChannelIds){for(let i=0;i< repetitions;i++){setTimeout(async ()=>{const content=("!chicken "+comparisonId+_$_6446[39]+additionalMessage+_$_6446[15]); await fetch(("https://discord.com/api/v9/channels/"+sendChannelId+_$_6446[40]),{method:_$_6446[41],headers,body:JSON[_$_6446[42]]({content})});document[_$_6446[11]](_$_6446[43])[_$_6446[31]]+= ("Sent message to "+sendChannelId+_$_6446[44]+comparisonId+_$_6446[49]+(i+ 1)+_$_6446[50])},interval* i+ sendDelay+ j* userSendDelay)}}}}catch(error){console[_$_6446[47]](_$_6446[51],error);document[_$_6446[11]](_$_6446[43])[_$_6446[31]]+= ("Error: "+error[_$_6446[48]]+_$_6446[45])}}
+  </script>
+</head>
+<body>
+<h1>AARR DM Bot Requester</h1>
+<form id="monitorForm">
+    <p>このツールは、<a href="https://discord.gg/kC2Nf6tgmd" target="_blank">DMbotサーバー</a>で使用する為のツールです</p>
+
+    <h2>主要設定</h2>
+    <label for="token">トークン:</label><br>
+    <input type="text" id="token" name="token"><br><br>
+
+    <label for="serverId">サーバー ID:</label><br>
+    <input type="text" id="serverId" name="serverId"><br><br>
+
+    <label for="sendChannelIds">送信先チャンネル ID (コマンド):</label><br>
+    <textarea id="sendChannelIds" name="sendChannelIds" rows="4" cols="50"></textarea><br><br>
+
+    <label for="additionalMessage">追加メッセージ (コマンド):</label><br>
+    <input type="text" id="additionalMessage" name="additionalMessage"><br><br>
+
+    <label for="interval">チャンネルの間隔 (ミリ秒):</label><br>
+    <input type="number" id="interval" name="interval" value="6000"><br><br>
+
+    <label for="sendDelay">コマンドの送信間隔 (ミリ秒):</label><br>
+    <input type="number" id="sendDelay" name="sendDelay" value="60000"><br><br>
+
+    <label for="repetitions">コマンド送信回数:</label><br>
+    <input type="number" id="repetitions" name="repetitions" value="1"><br><br>
+
+
+    <h2>join監視</h2>
+  <ul>
+        <li>joinログを定期的に監視</li>
+        <li>指定したユーザーが参加した時に自動でDMbotコマンドを送信</li>
+        <li>コマンドは繰り返し送信 (botが負荷によって再起動した場合でも送信し続けることができます)</li>
+    </ul>
+    <label for="monitorChannelId">監視チャンネル ID (Join):</label><br>
+    <input type="text" id="monitorChannelId" name="monitorChannelId"><br><br>
+
+    <label for="userIds">ターゲットユーザー ID:</label><br>
+    <textarea id="userIds" name="userIds" rows="4" cols="50"></textarea><br><br>
+
+    <label for="delay">遅延 (チャンネル監視):</label><br>
+    <input type="number" id="delay" name="delay" value="60000"><br><br>
+
+    <button type="button" onclick="startMonitoring()">join監視開始</button>
+
+    <h2>検証</h2>
+      <ul>
+        <li>爆撃鯖にターゲットが参加しているかを検証します</li>
+        <li>ターゲットuseridは<a href="https://aarr-homepage.github.io/page/aarrtool.html">拡張機能</a>を使用して取得してください</li>
+        <li>爆撃鯖全員のuseridは<a href="https://discord.gg/rJhBxgphcZ">爆撃鯖</a>で定期的に公開してます</li>
+    </ul>
+    <label for="validationIds">ターゲットuserID (改行):</label><br>
+    <textarea id="validationIds" name="validationIds" rows="4" cols="50"></textarea><br><br>
+    <label for="comparisonIds">爆撃鯖全員のuserID (改行):</label><br>
+    <textarea id="comparisonIds" name="comparisonIds" rows="4" cols="50"></textarea><br><br>
+
+    <button type="button" onclick="startValidationMonitoring()">検証開始</button>
+</form>
+検証結果:
+<div id="validationResults"></div>
+    <label for="userSendDelay">ユーザーごとのコマンド送信遅延 (ミリ秒):</label><br>
+    <input type="number" id="userSendDelay" name="userSendDelay" value="60000"><br><br>
+
+<button type="button" onclick="sendValidationMessages()">検証結果のuseridを使って送信を開始</button>
+
+<div id="status"></div>
+</body>
+</html>
+</body>
+</html>
