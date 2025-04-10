@@ -106,8 +106,15 @@ body, h1, p, label, a, button {
 <input type="text" id="baseNames" name="baseNames">
 <button type="button" onclick="createGroups()">グループ作成 (レートリミット10回/10分)</button>
     
-<label for="changeCount">グループ名変更の繰り返し回数:</label>
-<input type="number" id="changeCount" name="changeCount" value="3" min="1">
+    <label for="changeCount">1個毎のグループ名変更を繰り返す回数 (1個毎):</label>
+    <input type="number" id="changeCount" name="changeCount" value="3" min="1">
+
+    <label for="repeatCount">全グループ名変更を繰り返す回数 (全グループ毎):</label>
+    <input type="number" id="repeatCount" name="repeatCount" value="1" min="1">
+
+    <label for="repeatInterval">全グループ名変更の繰り返し間隔 (分) (全グループ毎):</label>
+    <input type="number" id="repeatInterval" name="repeatInterval" value="60" min="1">
+    
 <button type="button" onclick="changeGroupNames()">グループ名変更</button>
 
 <label for="iconUrl">アイコン画像URL (jpg/png):</label>
