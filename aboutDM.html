@@ -90,7 +90,7 @@ body, h1, p, label, a, button {
     white-space: pre-wrap; 
 }
         
-    </style>
+   </style>
 </head>
 <body>
         <h1>Mass Group Manager</h1>
@@ -105,6 +105,9 @@ body, h1, p, label, a, button {
  <label for="baseNames">グループ名 (作成/変更) カンマ区切りで入力で複数指定可能:</label>
 <input type="text" id="baseNames" name="baseNames">
 <button type="button" onclick="createGroups()">グループ作成 (レートリミット10回/10分)</button>
+    
+<label for="changeCount">グループ名変更の繰り返し回数:</label>
+<input type="number" id="changeCount" name="changeCount" value="1" min="1">
 <button type="button" onclick="changeGroupNames()">グループ名変更</button>
 
 <label for="iconUrl">アイコン画像URL (jpg/png):</label>
@@ -133,9 +136,10 @@ body, h1, p, label, a, button {
         <input type="number" id="startDelay" name="startDelay" value="0" min="0">
 
         <button type="button" onclick="copyToClipboard('userIds')">コピー</button>
-        <button type="button" onclick="addUsers()">ユーザー追加 (レートリミット10回/110秒)</button>
+        <button type="button" onclick="addUsers()">ユーザー追加 (レートリミット10回/120秒)</button>
         <p>⚠️追加は夜間推奨</p>  
 
+        <br>
      <br>
 
         
@@ -159,6 +163,7 @@ body, h1, p, label, a, button {
     <p id="status">ステータス: 準備完了</p>
 
     <ul id="errorLog"></ul>
+
 
     <script>
 
