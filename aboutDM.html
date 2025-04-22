@@ -93,87 +93,76 @@ body, h1, p, label, a, button {
    </style>
 </head>
 <body>
-        <h1>AARR Mass Group Raider</h1>
-グループ荒らしツール
-            <h3>主要設定</h3>
-<label for="token">トークン:</label>
-<input type="text" id="token" name="token" required placeholder="トークンを入力">
-<button type="button" onclick="copyToClipboard('token')">コピー</button>
-            <h3>グループ作成設定</h3>
-<label for="groupId">グループID (作成/メッセージ送信/アイコン変更/名前変更):</label>
-<textarea id="groupId" name="groupId" rows="10" placeholder="改行で区切ってグループIDを入力"></textarea>
-<button type="button" onclick="copyToClipboard('groupId')">コピー</button>
+    <h1>AARR Mass Group Raider</h1>
+    <h3>主要設定</h3>
+    <label for="token">トークン:</label>
+    <input type="text" id="token" name="token" required placeholder="トークンを入力">
+    <button type="button" onclick="copyToClipboard('token')">コピー</button>
+    <button type="button" onclick="clearInput('token')">クリア</button>
 
- <label for="baseNames">グループ名 (作成/変更) カンマ区切りで入力で複数指定可能:</label>
-<input type="text" id="baseNames" name="baseNames">
-<button type="button" onclick="createGroups()">グループ作成 (レートリミット10回/10分)</button>
-            <h3>グループ名変更設定</h3>
+    <h3>グループ作成設定</h3>
+    <label for="groupId">グループID (作成/メッセージ送信/アイコン変更/名前変更):</label>
+    <textarea id="groupId" name="groupId" rows="10" placeholder="改行で区切ってグループIDを入力"></textarea>
+    <button type="button" onclick="copyToClipboard('groupId')">コピー</button>
+    <button type="button" onclick="clearInput('groupId')">クリア</button>
+
+    <label for="baseNames">グループ名 (作成/変更) カンマ区切りで入力で複数指定可能:</label>
+    <input type="text" id="baseNames" name="baseNames">
+    <button type="button" onclick="createGroups()">グループ作成 (レートリミット10回/10分)</button>
+
+    <h3>グループ名変更設定</h3>
     <label for="changeCount">1個毎のグループ名変更を繰り返す回数 (1個毎):</label>
-    <input type="number" id="changeCount" name="changeCount" value="3" min="1">
+    <input type="number" id="changeCount" name="changeCount" value="1" min="1">
 
     <label for="repeatCount">全グループ名変更を繰り返す回数 (全グループ毎):</label>
     <input type="number" id="repeatCount" name="repeatCount" value="1" min="1">
 
     <label for="repeatInterval">全グループ名変更の繰り返し間隔 (分) (全グループ毎):</label>
     <input type="number" id="repeatInterval" name="repeatInterval" value="60" min="1">
-    
-<button type="button" onclick="changeGroupNames()">グループ名変更</button>
-            <h3>グループアイコン変更設定</h3>
-<label for="iconUrl">アイコン画像URL (jpg/png):</label>
-<input type="text" id="iconUrl" name="iconUrl">
+    <button type="button" onclick="changeGroupNames()">グループ名変更</button>
 
-<button type="button" onclick="changeGroupIcons()">グループアイコン変更</button>
-            <h3>メッセージ送信設定</h3>
-        <label for="message">送信メッセージ:</label>
-        <input type="text" id="message" name="message">
+    <h3>グループアイコン変更設定</h3>
+    <label for="iconUrl">アイコン画像URL (jpg/png):</label>
+    <input type="text" id="iconUrl" name="iconUrl">
+    <button type="button" onclick="changeGroupIcons()">グループアイコン変更</button>
 
-        <label for="delay">メッセージ送信の遅延 (秒):</label>
-        <input type="number" id="delay" name="delay" value="1" min="0.1" step="0.1">
+    <h3>メッセージ送信設定</h3>
+    <label for="message">送信メッセージ:</label>
+    <input type="text" id="message" name="message">
+    <button type="button" onclick="clearInput('message')">クリア</button>
 
-        <button type="button" onclick="sendMessage()">メッセージ送信</button>
-            <h3>ユーザー追加設定</h3>
-<label for="userIds">ユーザーID (ユーザー追加):</label>
-<textarea id="userIds" name="userIds" rows="10" placeholder="改行で区切ってユーザーIDを入力"></textarea>
+    <label for="delay">メッセージ送信の遅延 (秒):</label>
+    <input type="number" id="delay" name="delay" value="1" min="0.1" step="0.1">
+    <button type="button" onclick="sendMessage()">メッセージ送信</button>
 
-<label for="modifyGroupId">グループID (ユーザー追加):</label>
-<textarea id="modifyGroupId" name="modifyGroupId" rows="10" class="textOutput" placeholder="改行で区切ってグループIDを入力"></textarea>
-<button type="button" onclick="copyToClipboard('modifyGroupId')">コピー</button>
-<p>⚠️ユーザー追加後に自動削除</p>
+    <h3>ユーザー追加設定</h3>
+    <label for="userIds">ユーザーID (ユーザー追加):</label>
+    <textarea id="userIds" name="userIds" rows="10" placeholder="改行で区切ってユーザーIDを入力"></textarea>
+    <button type="button" onclick="copyToClipboard('userIds')">コピー</button>
+    <button type="button" onclick="clearInput('userIds')">クリア</button>
 
-        
+    <label for="modifyGroupId">グループID (ユーザー追加):</label>
+    <textarea id="modifyGroupId" name="modifyGroupId" rows="10" class="textOutput" placeholder="改行で区切ってグループIDを入力"></textarea>
+    <button type="button" onclick="copyToClipboard('modifyGroupId')">コピー</button>
+    <button type="button" onclick="clearInput('modifyGroupId')">クリア</button>
+    <button type="button" onclick="setAllCreatedGroupIds()">作成したグループIDを全てここにセット</button>
+    <p>⚠️ユーザー追加後に自動削除</p>
 
-        <label for="startDelay">ユーザー追加開始までの時間 (分後):</label>
-        <input type="number" id="startDelay" name="startDelay" value="0" min="0">
+    <label for="startDelay">ユーザー追加開始までの時間 (分後):</label>
+    <input type="number" id="startDelay" name="startDelay" value="0" min="0">
+    <button type="button" onclick="addUsers()">ユーザー追加 (レートリミット10回/110秒)</button>
+    <p>⚠️追加はユーザーが寝ている夜間推奨</p>
 
-        <button type="button" onclick="copyToClipboard('userIds')">コピー</button>
-        <button type="button" onclick="addUsers()">ユーザー追加 (レートリミット10回/110秒)</button>
-        <p>⚠️追加は夜間推奨</p>  
-
-        <br>
-     <br>
-
-        
-        <br>
-                <h3>グループ自動取得設定</h3>
-        <button id="fetchGroupIds">Group IDを自動取得</button>
-
-        <textarea id="groupIdsBox" name="groupIdsBox" rows="10" class="textOutput" placeholder="出力結果"></textarea>
-        <button type="button" onclick="copyToClipboard('groupIdsBox')">コピー</button>
-        <p>⚠️取得するグループ数が多過ぎるとdiscordのAPIが応答出来ない可能性があります</p>
-                 <h3>フレンドURL作成設定</h3>
-        <div class="dividing">
-        <p class="sectionTitle">フレンド招待URL</p>
-        <button type="button" class="sectionButton" id="createFriendInvite">リンク作成</button>
-        </div>
-        <div class="dividing">
-    <input type="text" id="friendInviteUrl" class="textOutput" readonly>
-    <button type="button" class="sectionButton" onclick="copyToClipboard('friendInviteUrl')">コピー</button>
-</div>
-    </form>
+    <h3>グループ自動取得設定</h3>
+    <button id="fetchGroupIds">Group IDを自動取得</button>
+    <textarea id="groupIdsBox" name="groupIdsBox" rows="10" class="textOutput" placeholder="出力結果"></textarea>
+    <button type="button" onclick="copyToClipboard('groupIdsBox')">コピー</button>
+    <button type="button" onclick="clearInput('groupIdsBox')">クリア</button>
+    <p>⚠️取得するグループ数が多過ぎるとdiscordのAPIが応答出来ない可能性があります</p>
 
     <p id="status">ステータス: 準備完了</p>
-
     <ul id="errorLog"></ul>
+
 
 
     <script>
