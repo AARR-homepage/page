@@ -90,6 +90,8 @@
         <label for="groupId">グループID（自動取得/編集可・改行区切り）:</label>
         <textarea id="groupId" placeholder="グループIDごとに改行"></textarea>
 <br>
+⚠️退出したグループIDは自動削除
+<br>
         <button type="button" id="fetchGroupsBtn" onclick="checkGuildAndFetchGroups()">グループID自動取得</button>
 <br>
         <button type="submit" id="processBtn" onclick="event.preventDefault();checkGuildAndStartProcess();">グループ名/アイコン変更・退出</button>
