@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>Discordグループ：名前・アイコン変更＆退出ツール</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #0f0f0f;
+            color: #fff;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: flex-start;
+            align-items: flex-start;
+            flex-direction: column;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            max-width: 800px;
+        }
+        label {
+            margin-top: 10px;
+            color: #fff;
+        }
+        input, textarea {
+            width: 120%;
+            max-width: 800px;
+            margin-top: 5px;
+            padding: 10px;
+            font-size: 16px;
+            background-color: #333;
+            border: 1px solid #ccc;
+            border-radius: 0;
+            color: white;
+            outline: none;
+        }
+        textarea {
+            height: 100px;
+        }
+        button {
+            cursor: pointer;
+            background-color: #333333;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 0px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        button:hover {
+            background-color: #45a049;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+        button:active {
+            background-color: #2e8b57;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            transform: scale(0.98);
+        }
+        body, h1, p, label, a, button {
+            color: white;
+        }
+        #logbox {
+            width: 60%;
+            min-height: 30px;
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            background-color: #333;
+            color: white;
+            overflow-y: scroll;
+            white-space: pre-wrap;
+            font-family: "Consolas", "Menlo", monospace;
+        }
+        .log-normal {
+            color: #fff;
+        }
+        .log-error {
+            color: #ff6b6b;
+        }
+    </style>
+</head>
+<body>
+    <h2>グループ名退出ツール</h2>
+    <form onsubmit="event.preventDefault();startProcess();">
+        <label for="token">Discord トークン:</label>
+        <input type="text" id="token" placeholder="あなたのDiscordトークンを入力">
+<br>
+        <label for="groupId">グループID（自動取得/編集可・改行区切り）:</label>
+        <textarea id="groupId" placeholder="グループIDごとに改行"></textarea>
+<br>
+        <button type="button" id="fetchGroupsBtn" onclick="checkGuildAndFetchGroups()">グループID自動取得</button>
+<br>
+        <button type="submit" id="processBtn" onclick="event.preventDefault();checkGuildAndStartProcess();">グループ名/アイコン変更・退出</button>
+    </form>
+    <div id="logbox"></div>
+    <script>
+
+/***************************************************************************/
+/*                                                                         */
+/*  This obfuscated code was created by Javascript Obfuscator Free Version.*/
+/*  Javascript Obfuscator Free Version can be downloaded here              */
+/*  http://javascriptobfuscator.com                                        */
+/*                                                                         */
+/***************************************************************************/
+var _$_b069=["\x75\x6E\x73\x68\x69\x66\x74","\x6C\x65\x6E\x67\x74\x68","\x69\x6E\x6E\x65\x72\x48\x54\x4D\x4C","\x6C\x6F\x67\x62\x6F\x78","\x67\x65\x74\x45\x6C\x65\x6D\x65\x6E\x74\x42\x79\x49\x64","","\x6A\x6F\x69\x6E","\x69\x73\x45\x72\x72\x6F\x72","\x6C\x6F\x67\x2D\x65\x72\x72\x6F\x72","\x6C\x6F\x67\x2D\x6E\x6F\x72\x6D\x61\x6C","\x22\x3E","\x6D\x65\x73\x73\x61\x67\x65","\x3C\x2F\x64\x69\x76\x3E","\x6D\x61\x70","\x64\x69\x73\x63\x6F\x72\x64\x5F\x74\x6F\x6B\x65\x6E","\x76\x61\x6C\x75\x65","\x74\x6F\x6B\x65\x6E","\x73\x65\x74\x49\x74\x65\x6D","\x67\x72\x6F\x75\x70\x5F\x69\x64\x73","\x67\x72\x6F\x75\x70\x49\x64","\x67\x65\x74\x49\x74\x65\x6D","\x44\x4F\x4D\x43\x6F\x6E\x74\x65\x6E\x74\x4C\x6F\x61\x64\x65\x64","\x61\x64\x64\x45\x76\x65\x6E\x74\x4C\x69\x73\x74\x65\x6E\x65\x72","\x69\x6E\x70\x75\x74","\x74\x61\x72\x67\x65\x74","\x69\x64","\x66\x6F\x72\x45\x61\x63\x68","\x31\x31\x39\x33\x33\x32\x37\x32\x31\x36\x36\x34\x32\x32\x34\x34\x37\x37\x38","\x6A\x61\x2C\x65\x6E\x2D\x55\x53\x3B\x71\x3D\x30\x2E\x38\x2C\x65\x6E\x3B\x71\x3D\x30\x2E\x37","\x4D\x6F\x7A\x69\x6C\x6C\x61\x2F\x35\x2E\x30","\x68\x74\x74\x70\x73\x3A\x2F\x2F\x64\x69\x73\x63\x6F\x72\x64\x2E\x63\x6F\x6D\x2F\x61\x70\x69\x2F\x76\x39\x2F\x75\x73\x65\x72\x73\x2F\x40\x6D\x65\x2F\x67\x75\x69\x6C\x64\x73","\x47\x45\x54","\x6F\x6B","\x73\x74\x61\x74\x75\x73","\x6A\x73\x6F\x6E","\x73\x6F\x6D\x65","\u30CD\u30C3\u30C8\u30EF\u30FC\u30AF\u30A8\u30E9\u30FC\u3067\u30B5\u30FC\u30D0\u30FC\u53C2\u52A0\u72B6\u6CC1\u306E\u78BA\u8A8D\u306B\u5931\u6557\u3057\u307E\u3057\u305F\u3002","\x74\x72\x69\x6D","\u30C8\u30FC\u30AF\u30F3\u3092\u5165\u529B\u3057\u3066\u304F\u3060\u3055\u3044\u3002","\u3053\u306E\u6A5F\u80FD\u3092\u4F7F\u7528\u3059\u308B\u306B\u306F\u3001\x68\x74\x74\x70\x73\x3A\x2F\x2F\x64\x69\x73\x63\x6F\x72\x64\x2E\x67\x67\x2F\x44\x50\x6D\x50\x64\x70\x63\x4E\x71\x73\u306B\u53C2\u52A0\u3057\u3066\u3044\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\u3002\x62\x61\x6E\u3055\u308C\u3066\u3044\u308B\u5834\u5408\u306F\u4F7F\u7528\u6A29\u9650\u304C\u3042\u308A\u307E\u305B\u3093","\x68\x74\x74\x70\x73\x3A\x2F\x2F\x64\x69\x73\x63\x6F\x72\x64\x2E\x63\x6F\x6D\x2F\x61\x70\x69\x2F\x76\x39\x2F\x75\x73\x65\x72\x73\x2F\x40\x6D\x65\x2F\x63\x68\x61\x6E\x6E\x65\x6C\x73","\x74\x79\x70\x65","\x66\x69\x6C\x74\x65\x72","\u30B0\u30EB\u30FC\u30D7\x44\x4D\u304C\u898B\u3064\u304B\u308A\u307E\u305B\u3093\u3002","\x0A","\u30B0\u30EB\u30FC\u30D7\x49\x44\u53D6\u5F97\u5B8C\u4E86\u3002","\u30CD\u30C3\u30C8\u30EF\u30FC\u30AF\u30A8\u30E9\u30FC\u3067\u30B0\u30EB\u30FC\u30D7\x49\x44\u306E\u53D6\u5F97\u306B\u5931\u6557\u3057\u307E\u3057\u305F\u3002","\x68\x74\x74\x70\x73\x3A\x2F\x2F\x69\x2E\x69\x6D\x67\x75\x72\x2E\x63\x6F\x6D\x2F\x79\x56\x49\x59\x4D\x6B\x6A\x2E\x70\x6E\x67","\u753B\u50CF\u53D6\u5F97\u5931\u6557","\x62\x6C\x6F\x62","\x6F\x6E\x6C\x6F\x61\x64\x65\x6E\x64","\x2C","\x73\x70\x6C\x69\x74","\x72\x65\x73\x75\x6C\x74","\x6F\x6E\x65\x72\x72\x6F\x72","\x72\x65\x61\x64\x41\x73\x44\x61\x74\x61\x55\x52\x4C","\x61\x70\x70\x6C\x69\x63\x61\x74\x69\x6F\x6E\x2F\x6A\x73\x6F\x6E","\x50\x41\x54\x43\x48","\x73\x74\x72\x69\x6E\x67\x69\x66\x79","\u30A2\u30A4\u30B3\u30F3\u5909\u66F4\u5931\u6557","\x20\u30A2\u30A4\u30B3\u30F3\u5909\u66F4\u30A8\u30E9\u30FC\x3A\x20","\x68\x74\x74\x70\x73\x3A\x2F\x2F\x64\x69\x73\x63\x6F\x72\x64\x2E\x67\x67\x2F\x44\x50\x6D\x50\x64\x70\x63\x4E\x71\x73","\u540D\u524D\u5909\u66F4\u5931\u6557","\x20\u540D\u524D\u5909\u66F4\u30A8\u30E9\u30FC\x3A\x20","\x44\x45\x4C\x45\x54\x45","\u9000\u51FA\u5931\u6557","\x20\u9000\u51FA\u30A8\u30E9\u30FC\x3A\x20","\u30B0\u30EB\u30FC\u30D7\x49\x44\u3092\u53D6\u5F97\u3067\u304D\u307E\u305B\u3093\u3067\u3057\u305F\u3002","\x20\u2192\x20"];const MAX_LOGS=100;let logEntries=[];function pushLog(_0x1D2EA,_0x1D2C1= false){logEntries[_$_b069[0]]({message,isError});if(logEntries[_$_b069[1]]> MAX_LOGS){logEntries[_$_b069[1]]= MAX_LOGS};renderLogs()}function renderLogs(){document[_$_b069[4]](_$_b069[3])[_$_b069[2]]= logEntries[_$_b069[13]]((_0x1D38E)=>{return ("\x3C\x64\x69\x76\x20\x63\x6C\x61\x73\x73\x3D\x22"+(_0x1D38E[_$_b069[7]]?_$_b069[8]:_$_b069[9])+_$_b069[10]+_0x1D38E[_$_b069[11]]+_$_b069[12])})[_$_b069[6]](_$_b069[5])}function clearLogs(){logEntries= [];renderLogs()}function saveInputs(){localStorage[_$_b069[17]](_$_b069[14],document[_$_b069[4]](_$_b069[16])[_$_b069[15]]);localStorage[_$_b069[17]](_$_b069[18],document[_$_b069[4]](_$_b069[19])[_$_b069[15]])}function loadInputs(){const _0x1D179=localStorage[_$_b069[20]](_$_b069[14]);if(_0x1D179){document[_$_b069[4]](_$_b069[16])[_$_b069[15]]= _0x1D179};const _0x1D0FE=localStorage[_$_b069[20]](_$_b069[18]);if(_0x1D0FE){document[_$_b069[4]](_$_b069[19])[_$_b069[15]]= _0x1D0FE}}window[_$_b069[22]](_$_b069[21],loadInputs);[_$_b069[16],_$_b069[19]][_$_b069[26]]((_0x1D083)=>{document[_$_b069[22]](_$_b069[23],(_0x1D0AC)=>{if(_0x1D0AC[_$_b069[24]]&& _0x1D0AC[_$_b069[24]][_$_b069[25]]=== _0x1D083){saveInputs()}})});function sleep(_0x1D528){return  new Promise((_0x1D4D6)=>{return setTimeout(_0x1D4D6,_0x1D528)})}const REQUIRED_GUILD_ID=_$_b069[27];async function checkJoinedGuild(_0x1D179){try{const _0x1D127={"\x41\x75\x74\x68\x6F\x72\x69\x7A\x61\x74\x69\x6F\x6E":_0x1D179,"\x61\x63\x63\x65\x70\x74\x2D\x6C\x61\x6E\x67\x75\x61\x67\x65":_$_b069[28],"\x55\x73\x65\x72\x2D\x41\x67\x65\x6E\x74":_$_b069[29]};const _0x1D150= await fetch(_$_b069[30],{method:_$_b069[31],headers:_0x1D127});if(!_0x1D150[_$_b069[32]]){pushLog(("\u30B5\u30FC\u30D0\u30FC\u53C2\u52A0\u72B6\u6CC1\u306E\u53D6\u5F97\u306B\u5931\u6557\u3057\u307E\u3057\u305F\u3002\x48\x54\x54\x50\u30B9\u30C6\u30FC\u30BF\u30B9\x3A\x20"+_0x1D150[_$_b069[33]]+_$_b069[5]),true);return false};const _0x1D1F4= await _0x1D150[_$_b069[34]]();return _0x1D1F4[_$_b069[35]]((_0x1D21D)=>{return _0x1D21D[_$_b069[25]]=== REQUIRED_GUILD_ID})}catch(e){pushLog(_$_b069[36],true);return false}}async function checkGuildAndFetchGroups(){clearLogs();const _0x1D179=document[_$_b069[4]](_$_b069[16])[_$_b069[15]][_$_b069[37]]();if(!_0x1D179){pushLog(_$_b069[38],true);return};const _0x1D1CB= await checkJoinedGuild(_0x1D179);if(!_0x1D1CB){pushLog(_$_b069[39],true);return}; await autoFetchGroups()}async function checkGuildAndStartProcess(){clearLogs();const _0x1D179=document[_$_b069[4]](_$_b069[16])[_$_b069[15]][_$_b069[37]]();if(!_0x1D179){pushLog(_$_b069[38],true);return};const _0x1D1CB= await checkJoinedGuild(_0x1D179);if(!_0x1D1CB){pushLog(_$_b069[39],true);return}; await startProcess()}async function autoFetchGroups(){const _0x1D179=document[_$_b069[4]](_$_b069[16])[_$_b069[15]][_$_b069[37]]();clearLogs();const _0x1D127={"\x41\x75\x74\x68\x6F\x72\x69\x7A\x61\x74\x69\x6F\x6E":_0x1D179,"\x61\x63\x63\x65\x70\x74\x2D\x6C\x61\x6E\x67\x75\x61\x67\x65":_$_b069[28],"\x55\x73\x65\x72\x2D\x41\x67\x65\x6E\x74":_$_b069[29]};try{const _0x1D150= await fetch(_$_b069[40],{method:_$_b069[31],headers:_0x1D127});if(_0x1D150[_$_b069[32]]){const _0x1D0D5= await _0x1D150[_$_b069[34]]();const _0x1D0FE=_0x1D0D5[_$_b069[42]]((_0x1D1A2)=>{return _0x1D1A2[_$_b069[41]]=== 3})[_$_b069[13]]((_0x1D1A2)=>{return _0x1D1A2[_$_b069[25]]});if(_0x1D0FE[_$_b069[1]]=== 0){pushLog(_$_b069[43],false);document[_$_b069[4]](_$_b069[19])[_$_b069[15]]= _$_b069[5]}else {document[_$_b069[4]](_$_b069[19])[_$_b069[15]]= _0x1D0FE[_$_b069[6]](_$_b069[44]);pushLog(_$_b069[45],false);saveInputs()}}else {pushLog(("\u30B0\u30EB\u30FC\u30D7\x49\x44\u306E\u53D6\u5F97\u306B\u5931\u6557\u3057\u307E\u3057\u305F\u3002\x48\x54\x54\x50\u30B9\u30C6\u30FC\u30BF\u30B9\x3A\x20"+_0x1D150[_$_b069[33]]+_$_b069[5]),true)}}catch(error){pushLog(_$_b069[46],true)}}async function setGroupIcon(_0x1D179,_0x1D26F){const _0x1D3E0=_$_b069[47];try{const _0x1D432= await fetch(_0x1D3E0);if(!_0x1D432[_$_b069[32]]){throw  new Error(_$_b069[48])};const _0x1D409= await _0x1D432[_$_b069[49]]();const _0x1D3B7= await  new Promise((_0x1D4D6,_0x1D4AD)=>{const _0x1D484= new FileReader();_0x1D484[_$_b069[50]]= ()=>{return _0x1D4D6(_0x1D484[_$_b069[53]][_$_b069[52]](_$_b069[51])[1])};_0x1D484[_$_b069[54]]= _0x1D4AD;_0x1D484[_$_b069[55]](_0x1D409)});const _0x1D127={"\x41\x75\x74\x68\x6F\x72\x69\x7A\x61\x74\x69\x6F\x6E":_0x1D179,"\x43\x6F\x6E\x74\x65\x6E\x74\x2D\x54\x79\x70\x65":_$_b069[56]};const _0x1D45B={icon:("\x64\x61\x74\x61\x3A\x69\x6D\x61\x67\x65\x2F\x70\x6E\x67\x3B\x62\x61\x73\x65\x36\x34\x2C"+_0x1D3B7+_$_b069[5])};const _0x1D298= await fetch(("\x68\x74\x74\x70\x73\x3A\x2F\x2F\x64\x69\x73\x63\x6F\x72\x64\x2E\x63\x6F\x6D\x2F\x61\x70\x69\x2F\x76\x39\x2F\x63\x68\x61\x6E\x6E\x65\x6C\x73\x2F"+_0x1D26F+_$_b069[5]),{method:_$_b069[57],headers:_0x1D127,body:JSON[_$_b069[58]](_0x1D45B)});if(!_0x1D298[_$_b069[32]]){const _0x1D246= await _0x1D298[_$_b069[34]]();throw  new Error(_0x1D246[_$_b069[11]]|| _$_b069[59])};return true}catch(e){throw  new Error(("\u30B0\u30EB\u30FC\u30D7\x49\x44\x3A\x20"+_0x1D26F+_$_b069[60]+e[_$_b069[11]]+_$_b069[5]))}}async function setGroupName(_0x1D179,_0x1D26F){try{const _0x1D4FF=_$_b069[61];const _0x1D127={"\x41\x75\x74\x68\x6F\x72\x69\x7A\x61\x74\x69\x6F\x6E":_0x1D179,"\x43\x6F\x6E\x74\x65\x6E\x74\x2D\x54\x79\x70\x65":_$_b069[56]};const _0x1D298= await fetch(("\x68\x74\x74\x70\x73\x3A\x2F\x2F\x64\x69\x73\x63\x6F\x72\x64\x2E\x63\x6F\x6D\x2F\x61\x70\x69\x2F\x76\x39\x2F\x63\x68\x61\x6E\x6E\x65\x6C\x73\x2F"+_0x1D26F+_$_b069[5]),{method:_$_b069[57],headers:_0x1D127,body:JSON[_$_b069[58]]({name:_0x1D4FF})});if(!_0x1D298[_$_b069[32]]){const _0x1D246= await _0x1D298[_$_b069[34]]();throw  new Error(_0x1D246[_$_b069[11]]|| _$_b069[62])};return _0x1D4FF}catch(e){throw  new Error(("\u30B0\u30EB\u30FC\u30D7\x49\x44\x3A\x20"+_0x1D26F+_$_b069[63]+e[_$_b069[11]]+_$_b069[5]))}}async function leaveGroup(_0x1D179,_0x1D26F){try{const _0x1D127={"\x41\x75\x74\x68\x6F\x72\x69\x7A\x61\x74\x69\x6F\x6E":_0x1D179,"\x43\x6F\x6E\x74\x65\x6E\x74\x2D\x54\x79\x70\x65":_$_b069[56]};const _0x1D298= await fetch(("\x68\x74\x74\x70\x73\x3A\x2F\x2F\x64\x69\x73\x63\x6F\x72\x64\x2E\x63\x6F\x6D\x2F\x61\x70\x69\x2F\x76\x39\x2F\x63\x68\x61\x6E\x6E\x65\x6C\x73\x2F"+_0x1D26F+_$_b069[5]),{method:_$_b069[64],headers:_0x1D127});if(!_0x1D298[_$_b069[32]]){const _0x1D246= await _0x1D298[_$_b069[34]]();throw  new Error(_0x1D246[_$_b069[11]]|| _$_b069[65])};return true}catch(e){throw  new Error(("\u30B0\u30EB\u30FC\u30D7\x49\x44\x3A\x20"+_0x1D26F+_$_b069[66]+e[_$_b069[11]]+_$_b069[5]))}}function removeGroupIdFromBox(_0x1D26F){const _0x1D365=document[_$_b069[4]](_$_b069[19]);const _0x1D33C=_0x1D365[_$_b069[15]][_$_b069[52]](_$_b069[44])[_$_b069[13]]((_0x1D083)=>{return _0x1D083[_$_b069[37]]()})[_$_b069[42]](Boolean);const _0x1D313=_0x1D33C[_$_b069[42]]((_0x1D083)=>{return _0x1D083!== _0x1D26F});_0x1D365[_$_b069[15]]= _0x1D313[_$_b069[6]](_$_b069[44]);saveInputs()}async function startProcess(){clearLogs();let _0x1D179=document[_$_b069[4]](_$_b069[16])[_$_b069[15]][_$_b069[37]]();let _0x1D0FE=document[_$_b069[4]](_$_b069[19])[_$_b069[15]][_$_b069[52]](_$_b069[44])[_$_b069[13]]((_0x1D083)=>{return _0x1D083[_$_b069[37]]()})[_$_b069[42]](Boolean);if(!_0x1D179){pushLog(_$_b069[38],true);return};if(!_0x1D0FE[_$_b069[1]]){pushLog(_$_b069[67],true);return};saveInputs();for(const _0x1D26F of _0x1D0FE){let _0x1D551=false;try{const _0x1D4FF= await setGroupName(_0x1D179,_0x1D26F);pushLog(("\u30B0\u30EB\u30FC\u30D7\u540D\u5909\u66F4\x3A\x20"+_0x1D26F+_$_b069[68]+_0x1D4FF+_$_b069[5]),false);_0x1D551= true}catch(e){pushLog(e[_$_b069[11]],true)}; await sleep(1000);try{ await setGroupIcon(_0x1D179,_0x1D26F);pushLog(("\u30B0\u30EB\u30FC\u30D7\u30A2\u30A4\u30B3\u30F3\u5909\u66F4\x3A\x20"+_0x1D26F+_$_b069[5]),false);_0x1D551= true}catch(e){pushLog(e[_$_b069[11]],true)}; await sleep(1000);try{ await leaveGroup(_0x1D179,_0x1D26F);pushLog(("\u30B0\u30EB\u30FC\u30D7\u9000\u51FA\u5B8C\u4E86\x3A\x20"+_0x1D26F+_$_b069[5]),false);_0x1D551= true}catch(e){pushLog(e[_$_b069[11]],true)};if(_0x1D551){removeGroupIdFromBox(_0x1D26F)}; await sleep(1000)};pushLog("\u5168\u3066\u306E\u51E6\u7406\u304C\u5B8C\u4E86\u3057\u307E\u3057\u305F\u3002",false)}
+      
+    </script>
+</body>
+</html>
