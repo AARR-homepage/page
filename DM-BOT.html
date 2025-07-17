@@ -170,115 +170,73 @@ margin: 5px 0;
 </style>
 <div class="white-background">
 <article>
+<body>
 
-<h2>ユーザーインストールbotの使い方</h2>
-<p>
-<strong>（スマホの場合は簡単なFirefox版を推奨<br>
-※Firefoxブラウザで行う必要有）</strong>
-</p>
-<ol>
-  <li>
-    <a>
-      Botを自分のアカウントに追加 
+<h1>DM爆撃bot要請ツール 使い方</h1>
+
+  <div class="section">
+    <h2>コマンド一覧</h2>
+    <ul>
+      <li>
+        <strong>荒連メンバーのみ可能:</strong><br>
+        <code>!chicken userid</code><br>
+        例：<code>!chicken 1297747558801739829</code>
+      </li>
+      <li>
+        <strong>要請ロールメンバー/荒連ブーストメンバーのみ可能:</strong><br>
+        <code>!chicken userid message</code><br>
+        <span>回数最大 <strong>5000</strong></span>
+      </li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>ブラックリスト制</h2>
+    <div class="blacklist">
+      <ul>
+        <li>荒連参加者同士には送れません</li>
+        <li>❌ この鯖にいないか禁止されてる</li>
+      </ul>
+    </div>
+    <div class="success">
+      <ul>
+        <li>✅ 成功</li>
+      </ul>
+    </div>
+    <p>2024/10/22 ブラックリスト制追加</p>
+  </div>
+
+  <div class="section">
+    <h2>機能概要</h2>
+    <ul>
+      <li>ユ一ザ一リストから既に爆撃鯖に参加しているユ一ザ一IDを抽出</li>
+      <li>ユ一ザ一に送信機能</li>
+      <li>コマンドを送信する回数の指定が可能</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>使用方法</h2>
+    <ol>
+      <li>
+        <strong>join定期監視</strong><br>
+        joinログを監視し、ユ一ザ一が参加したら開始リクエストを送ります。
+      </li>
+      <li>
+        <strong>参加済みユーザー検証</strong><br>
+        参加しているユーザーをIDリストの中から確認し、そのユーザーIDに送信を開始します。
+      </li>
+    </ol>
+  </div>
+
+  <div class="section">
+    <h2>関連リンク</h2>
+    <a href="https://aarr-homepage.github.io/page/AARR-DM-BOT-Requester.html" target="_blank">
+      AARR-DM-BOT-Requester ツールページ
     </a>
-    <br>
-
-    <br>
-    <a href="https://discord.com/oauth2/authorize?client_id=1391974282929770496" target="_blank" rel="noopener noreferrer">
-      🔗AARU版 :javascript
-    </a>
-      <br>
-
-       <br>
-    <a href="https://discord.com/oauth2/authorize?client_id=1391066147792752711" target="_blank" rel="noopener noreferrer">
-      🔗MSK_zzz版 (製作者) :python
-    </a>
-  </li>
-<br>
-
-<br>
-  <li>
-    <a>
-      ランダムメンション用のUSER ID取得拡張機能をインストールする
-    </a>
-     <br>
-      
-     <br>
-    <a href="https://addons.mozilla.org/ja/firefox/addon/aarr-discord-multi-tools/" target="_blank" rel="noopener noreferrer">
-      🔗推奨：Firefox版拡張機能「AARR Discord Multi Tools」（Firefoxブラウザ限定 スマホ版対応）
-    </a>
-     <br>
-
-     <br>
-    <a href="https://greasyfork.org/ja/scripts/518295-discord-uid-extractor-with-format-toggle/code" target="_blank" rel="noopener noreferrer">
-      🔗より高度なカスタマイズが出来るgreasyfork※オープンソース版を使用したい場合はこちら (tampermonkeyが使用出来るブラウザが必要)
-    </a>
-  </li>
-<br>
-
-<br>
-  <li>
-    ページをリロードし、拡張機能が正しく反映されていることを確認
-  </li>
-<br>
-
-<br>
-  <li>
-    UIDを取得してコピー（フォーマットはカンマ形式を選択）
-  </li>
-<br>
-
-<br>
-  <li>
-    スラッシュコマンド形式でコピーしたIDをBotに入力
-<br>
-注意：IDが多すぎるとdiscordの文字数制限にかかる為コマンドに入力できない場合があります
-<br>
-
-<br>
-スマホの場合は ブラウザの設定 > PC版サイトで開く を行わないとアプリコマンドが表示されない可能性があります
-
-  </li>
-<br>
-
-<br>
-  <li>
-    コマンドを使用すると自分だけに表示されるパネルが出てくるのでボタンを連打して荒らしが可能
-
-<br>
-注意：送信する荒らしメッセージも"自分だけに表示されています"になってる場合auto modや低速モードに弾かれてる可能性があります
-  </li>
-
-
-<br>
- <li>
-    <a href="https://www.opautoclicker.com/" target="_blank" rel="noopener noreferrer">
-      🔗auto clicker(外部製)
-    </a>
- <a>
-    を使用すると連打が簡単に出来ます
- </a>
- </li>
-
-
-
+  </div>
 
     
-</ol>
-<p>
-解説動画：
-</p>
-<a href="https://imgur.com/a/dNW15ZG" target="_blank" rel="noopener noreferrer">
-<blockquote class="imgur-embed-pub" lang="en" data-id="a/dNW15ZG" data-context="false" ><a href="//imgur.com/a/dNW15ZG"></a></blockquote><script async src="//s.imgur.com/min/embed.js" charset="utf-8"></script>
-<div style="text-align:center;">
-<iframe src="https://imgur.com/a/dNW15ZG" width="480" height="360" frameborder="0" allowfullscreen title="操作動画"></iframe>
-</div>
-
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
-<body>
 </body>
 <br>
 </font>
