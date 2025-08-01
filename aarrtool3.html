@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>AARR Dev</title>
+<link rel="stylesheet" href="style.css">
+<meta name="description" content="AAEE">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#a9ceec">
+    <meta property="og:url" content="">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="拡張機能入れ方の解説">
+    <meta property="og:description" content="">
+    <meta property="og:site_name" content="AARR">
+    <meta property="og:image" content="https://i.imgur.com/Sj5QNyP.png">
+<link rel="icon" type="image/png" href="https://i.imgur.com/Sj5QNyP.png">
+ 
+</head>
+<body>
+<header>
+    <h1> <a href="index.html" style="color: rgb(238, 238, 238);">AARR Dev</a></h1>
+    <nav>
+        <ul>
+            <li><a href="index.html">TOP</a></li>
+            <li><a href="about2.html">画像素材</a></li>
+            <li><a href="about3.html">思想・方針</a></li>
+            <li><a href="about5.html">webツール</a></li>
+            <li><a href="aarrtool.html">拡張機能</a></li>
+            <li><a href="about7.html">サイト利用規約</a></li>
+            <li><a href="LICENSE.html">LICENSE</a></li>
+        </ul>
+    </nav>
+</header>
+
+<style>
+nav ul li a:hover {
+color: #ad0202;
+}
+</style>
+<main>
+<style>
+a { color: #add8e6; }
+    
+body {
+margin: 0;
+padding: 0;
+font-family: Arial, sans-serif;
+background-size: cover; 
+background-position: center; 
+background-repeat: no-repeat;
+background-image: url('https://i.imgur.com/yEPOqRi.png'); 
+}
+
+header {
+background-color: rgba(45, 45, 45, 1); 
+color: #757575;
+padding: 20px;
+display: flex;
+justify-content: space-between;
+align-items: center;
+border-radius: 0px; 
+margin: 0px; 
+}
+
+nav ul {
+list-style: none;
+margin: 0;
+padding: 0;
+display: flex;
+}
+
+nav li {
+margin-left: 20px;
+}
+
+nav li:first-child {
+margin-left: 0;
+}
+
+nav a {
+color: #fff;
+text-decoration: none;
+}
+
+main {
+max-width: 800px;
+margin: 0 auto;
+padding: 40px;
+background-color: rgba(45, 45, 45, 0.9); 
+color: #f5f5f5; 
+border-radius: 20px;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); 
+}
+
+article {
+margin-bottom: 40px;
+}
+
+article h2 {
+font-size: 32px;
+margin-bottom: 20px;
+color: #ffffff; 
+}
+
+article p {
+line-height: 1.5;
+}
+
+footer {
+background-color: rgb(71, 71, 71); 
+padding: 20px;
+text-align: center;
+border-radius: 0px; 
+margin: 0px; 
+}
+
+.white-background {
+background-color: rgba(58, 58, 58, 0.8); 
+padding: 10px;
+border-radius: 20px; 
+}
+
+header {
+background-color: #2c2f33;
+color: #ffffff;
+padding: 20px;
+display: flex;
+justify-content: space-between;
+align-items: center;
+flex-wrap: wrap; 
+}
+
+nav ul {
+list-style: none;
+margin: 0;
+padding: 0;
+display: flex;
+flex-wrap: wrap; 
+justify-content: center; 
+}
+
+nav ul li {
+margin: 10px; 
+}
+
+nav ul li a {
+color: #ffffff;
+text-decoration: none;
+font-size: 18px;
+}
+
+nav ul li a:hover {
+text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+header {
+flex-direction: column; 
+align-items: flex-start; 
+}
+
+nav ul {
+flex-direction: column; 
+align-items: flex-start; 
+}
+
+nav ul li {
+margin: 5px 0; 
+}
+}
+</style>
+<div class="white-background">
+<article>
+<h2><font color="#ad0202">拡張機能入れ方の解説</font></h2>
+AARR製拡張機能は100％オープンソースです
+<br>
+自分でカスタマイズしたり安心して使用できます
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<h1>💻📱(PC/スマホ版初心者向け)拡張機能入れ方の解説</h1>
+拡張機能は互換性の高いFirefoxを使用してください
+<br>
+(※この入れ方の場合スマホ版は使用出来るのがFirefox版拡張機能のみで使える拡張機能が限られます。スマホ版で全部の拡張機能を使用したい場合はこれの下に記述したもう1つのやり方を参考にしてください)
+<ol>
+
+<li>Firefoxをインストール
+<br>
+　
+<br>
+<a href="https://www.mozilla.org/ja/firefox/new/" target="_blank">Firefox通常版 (PC:通常)</a>
+<br>
+　
+<br>
+<a href="https://www.mozilla.org/en-US/firefox/developer/" target="_blank">FirefoxDEV版 (PC:推奨)</a>
+<br>
+　
+<br>
+<a href="https://play.google.com/store/apps/details?id=org.mozilla.firefox&referrer=utm_source%3Dwww.mozilla.org%26utm_medium%3Dreferral%26utm_campaign%3Dfirefox-browsers-mobile-android&hl=en" target="_blank">Firefox (スマホ:android)</a>
+<br>
+　
+<br>
+<a href="https://www.mozilla.org/en-US/firefox/browsers/mobile/ios/" target="_blank">Firefox (スマホ:IOS)</a>
+<br>
+　
+<br>
+</li>
+<br>
+　
+<br>
+<li><a href="https://www.tampermonkey.net/index.php?browser=chrome" target="_blank">Tampermonkey</a>をブラウザにインストール</li>
+<br>
+　
+<br>
+<li>※Firefox以外のブラウザの場合はブラウザの開発者モードを有効にする</li>
+<br>
+　
+<br>
+<li><a href="https://greasyfork.org/ja/users/1399965-aarr-tool" target="_blank">ここからaarrの拡張機能をTampermonkeyに追加</a></li>
+<br>
+　
+<br>
+<li>ページリロードして反映されていたら成功 (デベロッパーモードを有効にしてから反映されるまで多少の遅延あり)</li>
+</ol>
+<br>
+　
+<br>
+<h1>📱🔧(スマホ版上級者向け) 拡張機能入れ方の解説</h1>
+<br>
+(※スマホ版でPCと同じように全種類の拡張機能を使いたい場合のやり方です。難易度が高い為非推奨)
+<br>
+　
+<br>
+<ol>
+<li><a href="https://play.google.com/store/apps/details?id=com.lemurbrowser.exts&hl=en-US" target="_blank">lemurブラウザ</a>をインストール</li>
+<br>
+　
+<br>
+<li><a href="https://www.tampermonkey.net/index.php?browser=chrome" target="_blank" target="_blank">Tampermonkey</a>をlemurブラウザにインストール</li>
+<br>
+　
+<br>
+<li>lemurブラウザの開発者(デベロッパーモード)を有効にする</li>
+<br>
+　
+<br>
+<li><a href="https://greasyfork.org/ja/users/1399965-aarr-tool" target="_blank">ここからaarrの拡張機能を追加</a></li>
+<br>
+　
+<br>
+<li>ボタンを押しても自動でインストールがされない場合：Greasy Forkで拡張機能のコードをコピーする→Tampermonkey設定→新しいスクリプトを追加→初期のコードを消してコピーしたコードを張り付ける→ファイル→保存</li>
+<br>
+　
+<br>
+</ol>
+一連の動作はlemurのデスクトップ(PC画面)表示モードで行ってください
+<br>
+　
+<br><br>
+拡張機能の使い方は以下のページを参考にしてください
+<br><br>
+<a href="aarrtool2.html">拡張機能の使い方</a>
+<br><br>
+<h1>🔰解説動画</h1>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/CmH3izALTa8?si=jtCjPGFdLTIg0yuP" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</body>
+<br>
+</font>
+<font color="#ad0202"></font>
+<br>
+</article>
+<br>
+<br>
+</div>
+</main>
+<footer>
+<p>
+<a href="LICENSE.html" style="color: rgb(219, 219, 219);">©AARR 2025</a>
+<a href="https://discord.gg/DPmPdpcNqs"><font color="#00BFFF">Discord server</font></a>
+</p>
+</footer>
+</body>
+</html>
