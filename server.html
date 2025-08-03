@@ -255,10 +255,10 @@
 
   document.querySelectorAll('nav ul li a').forEach(a => {
     a.addEventListener('mouseover', function() {
-      this.classList.add('animate__heartBeat');
+      this.classList.add('animate__animated', 'animate__heartBeat');
     });
     a.addEventListener('mouseout', function() {
-      this.classList.remove('animate__heartBeat');
+      this.classList.remove('animate__animated', 'animate__heartBeat');
     });
   });
 
