@@ -5,20 +5,25 @@
 <title>AARR Dev</title>
 <link rel="stylesheet" href="style.css">
 <meta name="description" content="AAEE">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="theme-color" content="#a9ceec">
-    <meta property="og:url" content="">
-    <meta property="og:type" content="article">
-    <meta property="og:title" content="拡張機能/使い方">
-    <meta property="og:description" content="">
-    <meta property="og:site_name" content="AARR">
-    <meta property="og:image" content="https://i.imgur.com/Sj5QNyP.png">
-<link rel="icon" type="image/png" href="https://i.imgur.com/Sj5QNyP.png">
- 
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#a9ceec">
+<meta property="og:url" content="">
+<meta property="og:type" content="article">
+<meta property="og:title" content="拡張機能一覧">
+<meta property="og:description" content="AARR">
+<meta property="og:site_name" content="">
+<meta property="og:image" content="https://i.imgur.com/0uXXNwP.png">
+<link rel="icon" type="image/png" href="https://i.imgur.com/9JD9TMF.png">
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 </head>
 <body>
-<header>
-    <h1> <a href="index.html" style="color: rgb(238, 238, 238);">AARR Dev</a></h1>
+<header class="animate__animated animate__fadeInDown">
+    <h1>
+        <a href="index.html" style="color: rgb(238, 238, 238); font-family: 'Montserrat', Arial, sans-serif; font-size: 2em;">AARR Dev</a>
+    </h1>
     <nav>
         <ul>
             <li><a href="index.html">TOP</a></li>
@@ -31,6 +36,74 @@
         </ul>
     </nav>
 </header>
+<main>
+    <div class="white-background animate__animated animate__fadeInUp">
+        <article>
+ <h2 class="headline">拡張機能一覧</h2>
+            
+<h1>💻ID取得拡張機能</h1>
+ユーザーID/チャンネルID/メッセージIDを取得する為の拡張機能です
+<br>
+<a href="https://addons.mozilla.org/ja/firefox/addon/aarr-discord-multi-tools/" style="color: #00bfff; text-decoration: none; font-weight: bold; display: block; margin-bottom: 10px;" target="_blank">🔥 userID/channelID/messageID拡張機能(Firefox版)</a>
+<img src="https://i.imgur.com/23VQg6l.png" alt="ID取得用拡張機能" width="250" height="150">
+<br>
+<a href="https://greasyfork.org/ja/scripts/518295-discord-uid-extractor/code" style="color: #00bfff; text-decoration: none; font-weight: bold; display: block; margin-bottom: 10px;" target="_blank">📜 userID拡張機能(UserScript版)</a>
+<br>
+<a href="https://greasyfork.org/ja/scripts/518683-discord-channel-id-extractor" style="color: #00bfff; text-decoration: none; font-weight: bold; display: block; margin-bottom: 10px;" target="_blank">📜 channelID拡張機能(UserScript版)</a>
+<br>
+<a href="https://greasyfork.org/ja/scripts/526248-discord-message-id-extractor/code" style="color: #00bfff; text-decoration: none; font-weight: bold; display: block; margin-bottom: 10px;" target="_blank">📜 messageID拡張機能(UserScript版)</a>
+<br>
+<h1>🔑Token確認拡張機能</h1>
+自分のTokenを取得する為の拡張機能です
+<a href="https://addons.mozilla.org/ja/firefox/addon/aarr-discord-token-checker/" style="color: #00bfff; text-decoration: none; font-weight: bold; display: block; margin-bottom: 10px;" target="_blank">🔥 token確認拡張機能(Firefox版)</a>
+<br>
+
+<h1>🚀複垢管理拡張機能</h1>
+複数のtokenを管理したりtokenを使ったログインをする為の拡張機能
+<br>
+注意：
+<br>
+tokenボックスの数を増やしたい人は const maxTokens = 100; の値を変更してください
+<br>
+tokenがリセットされるので口グアウトはしないようにしてください 
+<br>
+tokenログインに失敗した際は"relogin"ボタンを押してください
+<br>
+<a href="https://greasyfork.org/ja/scripts/523829-manage-multi-discord-accounts/code" style="color: #00bfff; text-decoration: none; font-weight: bold; display: block; margin-bottom: 10px;" target="_blank">📜 tokenログイン/複垢管理(UserScript版)</a>
+<br>
+
+    
+<h1>🔨その他の拡張機能</h1>
+荒らし以外の用途の拡張機能
+<br>
+<a href="https://greasyfork.org/ja/scripts/521551-discord-dm-sender-with-input-box/code" style="color: #00bfff; text-decoration: none; font-weight: bold; display: block; margin-bottom: 10px;" target="_blank">📜 AARR用匿名botメッセージ送信(UserScript版)</a>
+
+
+
+        </article>
+        <section>
+          
+<h1>🔰入れ方/使い方</h1>
+<br>
+<a href="aarrtool3.html">→ UserScript版拡張機能の入れ方はこちら</a>
+
+<br>
+　
+<br>
+<img src="https://i.imgur.com/ikypRQn.png" alt="拡張機能" width="250" height="150">
+
+
+
+        </section>
+    </div>
+</main>
+<footer class="animate__animated animate__fadeInUp">
+    <p>
+        <a href="LICENSE.html" style="color: rgb(219, 219, 219);">©AARR 2025</a>
+        &nbsp;|&nbsp;
+        <a href="https://discord.gg/DPmPdpcNqs" style="color:#00BFFF;">Discord server</a>
+    </p>
+</footer>
 <script>
 
 window.addEventListener('scroll', function() {
@@ -303,79 +376,6 @@ footer a {
     }
 }
 </style>
-<div class="white-background">
-<article>
-<h2><font color="#ad0202">拡張機能一覧</font></h2>
-
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
-<body>
-
-<h1>💻ID取得拡張機能</h1>
-ユーザーID/チャンネルID/メッセージIDを取得する為の拡張機能です
-<br>
-<a href="https://addons.mozilla.org/ja/firefox/addon/aarr-discord-multi-tools/" style="color: #00bfff; text-decoration: none; font-weight: bold; display: block; margin-bottom: 10px;" target="_blank">🔥 userID/channelID/messageID拡張機能(Firefox版)</a>
-<img src="https://i.imgur.com/23VQg6l.png" alt="ID取得用拡張機能" width="250" height="150">
-<br>
-<a href="https://greasyfork.org/ja/scripts/518295-discord-uid-extractor/code" style="color: #00bfff; text-decoration: none; font-weight: bold; display: block; margin-bottom: 10px;" target="_blank">📜 userID拡張機能(UserScript版)</a>
-<br>
-<a href="https://greasyfork.org/ja/scripts/518683-discord-channel-id-extractor" style="color: #00bfff; text-decoration: none; font-weight: bold; display: block; margin-bottom: 10px;" target="_blank">📜 channelID拡張機能(UserScript版)</a>
-<br>
-<a href="https://greasyfork.org/ja/scripts/526248-discord-message-id-extractor/code" style="color: #00bfff; text-decoration: none; font-weight: bold; display: block; margin-bottom: 10px;" target="_blank">📜 messageID拡張機能(UserScript版)</a>
-<br>
-<h1>🔑Token確認拡張機能</h1>
-自分のTokenを取得する為の拡張機能です
-<a href="https://addons.mozilla.org/ja/firefox/addon/aarr-discord-token-checker/" style="color: #00bfff; text-decoration: none; font-weight: bold; display: block; margin-bottom: 10px;" target="_blank">🔥 token確認拡張機能(Firefox版)</a>
-<br>
-
-<h1>🚀複垢管理拡張機能</h1>
-複数のtokenを管理したりtokenを使ったログインをする為の拡張機能
-<br>
-注意：
-<br>
-tokenボックスの数を増やしたい人は const maxTokens = 100; の値を変更してください
-<br>
-tokenがリセットされるので口グアウトはしないようにしてください 
-<br>
-tokenログインに失敗した際は"relogin"ボタンを押してください
-<br>
-<a href="https://greasyfork.org/ja/scripts/523829-manage-multi-discord-accounts/code" style="color: #00bfff; text-decoration: none; font-weight: bold; display: block; margin-bottom: 10px;" target="_blank">📜 tokenログイン/複垢管理(UserScript版)</a>
-<br>
-
-    
-<h1>🔨その他の拡張機能</h1>
-荒らし以外の用途の拡張機能
-<br>
-<a href="https://greasyfork.org/ja/scripts/521551-discord-dm-sender-with-input-box/code" style="color: #00bfff; text-decoration: none; font-weight: bold; display: block; margin-bottom: 10px;" target="_blank">📜 AARR用匿名botメッセージ送信(UserScript版)</a>
-
-
-<h1>🔰入れ方/使い方</h1>
-<br>
-<a href="aarrtool3.html">→ UserScript版拡張機能の入れ方はこちら</a>
-
-<br>
-　
-<br>
-<img src="https://i.imgur.com/ikypRQn.png" alt="拡張機能" width="250" height="150">
-
-
-</body>
-<br>
-</font>
-<font color="#ad0202"></font>
-<br>
-</article>
-<br>
-<br>
-</div>
-</main>
-<footer>
-<p>
-<a href="LICENSE.html" style="color: rgb(219, 219, 219);">©AARR 2025</a>
-<a href="https://discord.gg/DPmPdpcNqs"><font color="#00BFFF">Discord server</font></a>
-</p>
-</footer>
 </body>
 </html>
+
