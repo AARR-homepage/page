@@ -3,20 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <title>AARR Dev</title>
-<link rel="stylesheet" href="style.css">
-<meta name="description" content="AAEE">
+<meta name="description" content="AARR">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#a9ceec">
-<meta property="og:url" content="">
-<meta property="og:type" content="article">
 <meta property="og:title" content="拡張機能一覧">
 <meta property="og:description" content="AARR">
-<meta property="og:site_name" content="">
 <meta property="og:image" content="https://i.imgur.com/0uXXNwP.png">
 <link rel="icon" type="image/png" href="https://i.imgur.com/9JD9TMF.png">
-
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 </head>
 <body>
@@ -39,9 +33,10 @@
 <main>
     <div class="white-background animate__animated animate__fadeInUp">
         <article>
- <h2 class="headline">拡張機能一覧</h2>
-            
-<h1>💻ID取得拡張機能</h1>
+            <h2 class="headline">拡張機能一覧</h2>
+            <div class="tool-list">
+                <div class="tool-block">
+                    <h1>💻ID取得拡張機能</h1>
 ユーザーID/チャンネルID/メッセージIDを取得する為の拡張機能です
 <br>
 <a href="https://addons.mozilla.org/ja/firefox/addon/aarr-discord-multi-tools/" style="color: #00bfff; text-decoration: none; font-weight: bold; display: block; margin-bottom: 10px;" target="_blank">🔥 userID/channelID/messageID拡張機能(Firefox版)</a>
@@ -53,12 +48,15 @@
 <br>
 <a href="https://greasyfork.org/ja/scripts/526248-discord-message-id-extractor/code" style="color: #00bfff; text-decoration: none; font-weight: bold; display: block; margin-bottom: 10px;" target="_blank">📜 messageID拡張機能(UserScript版)</a>
 <br>
-<h1>🔑Token確認拡張機能</h1>
+                </div>
+                <div class="tool-block">
+                  <h1>🔑Token確認拡張機能</h1>
 自分のTokenを取得する為の拡張機能です
 <a href="https://addons.mozilla.org/ja/firefox/addon/aarr-discord-token-checker/" style="color: #00bfff; text-decoration: none; font-weight: bold; display: block; margin-bottom: 10px;" target="_blank">🔥 token確認拡張機能(Firefox版)</a>
 <br>
-
-<h1>🚀複垢管理拡張機能</h1>
+                </div>
+                <div class="tool-block">
+                  <h1>🚀複垢管理拡張機能</h1>
 複数のtokenを管理したりtokenを使ったログインをする為の拡張機能
 <br>
 注意：
@@ -71,17 +69,20 @@ tokenログインに失敗した際は"relogin"ボタンを押してください
 <br>
 <a href="https://greasyfork.org/ja/scripts/523829-manage-multi-discord-accounts/code" style="color: #00bfff; text-decoration: none; font-weight: bold; display: block; margin-bottom: 10px;" target="_blank">📜 tokenログイン/複垢管理(UserScript版)</a>
 <br>
-
-    
-<h1>🔨その他の拡張機能</h1>
+                </div>
+                <div class="tool-block">
+                  <h1>🔨その他の拡張機能</h1>
 荒らし以外の用途の拡張機能
 <br>
 <a href="https://greasyfork.org/ja/scripts/521551-discord-dm-sender-with-input-box/code" style="color: #00bfff; text-decoration: none; font-weight: bold; display: block; margin-bottom: 10px;" target="_blank">📜 AARR用匿名botメッセージ送信(UserScript版)</a>
 
-
-
+                </div>
+               
+            </div>
         </article>
-        <section>
+
+    </div>
+          <section>
           
 <h1>🔰入れ方/使い方</h1>
 <br>
@@ -95,7 +96,6 @@ tokenログインに失敗した際は"relogin"ボタンを押してください
 
 
         </section>
-    </div>
 </main>
 <footer class="animate__animated animate__fadeInUp">
     <p>
@@ -105,7 +105,6 @@ tokenログインに失敗した際は"relogin"ボタンを押してください
     </p>
 </footer>
 <script>
-
 window.addEventListener('scroll', function() {
     const header = document.querySelector('header');
     if (window.scrollY > 20) {
@@ -116,8 +115,6 @@ window.addEventListener('scroll', function() {
         header.style.transform = "scale(1)";
     }
 });
-
-
 document.querySelectorAll('nav ul li a').forEach(a => {
     a.addEventListener('mouseover', function() {
         this.classList.add('animate__heartBeat');
@@ -213,85 +210,61 @@ main {
     font-family: 'Montserrat', Arial, sans-serif;
     font-size: 2em;
     font-weight: bold;
+    margin-bottom: 24px;
 }
 
-.aarr-title {
-    font-size: 1.4em;
-    font-family: 'Montserrat', Arial, sans-serif;
-    margin-top: 0.7em;
-}
-
-.section-title {
-    margin: 1.3em 0 0.3em 0;
-    font-size: 1.1em;
-    font-weight: 700;
-    color: #00bfff;
-}
-
-.discord-btn {
-    display: inline-block;
-    background: linear-gradient(90deg, #5865F2 0%, #5ac8fa 100%);
-    color: #fff;
-    font-weight: bold;
-    border-radius: 8px;
-    padding: 10px 22px;
-    font-size: 1em;
-    text-decoration: none;
-    margin-top: 8px;
-    box-shadow: 0 2px 8px rgba(88,101,242,0.12);
-    transition: background 0.2s, transform 0.2s;
-}
-
-.discord-btn:hover {
-    background: linear-gradient(90deg, #5ac8fa 0%, #5865F2 100%);
-    transform: scale(1.06);
-    color: #fff;
-}
-
-.server-status {
-    margin-top: 12px;
-    color: #00bfff;
-    font-size: 0.98em;
-}
-
-.status-link {
-    color: #00bfff;
-    text-decoration: underline;
-    font-weight: bold;
-    margin-left: 5px;
-}
-
-.discord-widget-container {
-    margin-top: 15px;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 2px 10px rgba(88,101,242,0.15);
-    background: #fff;
-    max-width: 370px;
-}
-
-.activity-title {
-    color: #ad0202;
-    font-size: 1.24em;
-    margin-top: 1.5em;
-    font-family: 'Montserrat', Arial, sans-serif;
-}
-
-.video-gallery {
+.tool-list {
     display: flex;
     flex-wrap: wrap;
-    gap: 12px;
-    margin-top: 12px;
+    gap: 18px;
+    margin-bottom: 24px;
+    justify-content: flex-start;
 }
 
-.video-gallery iframe {
-    flex: 1 1 240px;
-    min-width: 220px;
-    max-width: 100%;
-    border-radius: 10px;
-    border: none;
-    background: #222;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+.tool-block {
+    flex: 1 1 230px;
+    min-width: 210px;
+    background: rgba(45,45,45,0.93);
+    border-radius: 16px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.09);
+    padding: 12px 10px;
+    margin-bottom: 12px;
+    transition: box-shadow 0.2s;
+    margin-right: 8px;
+}
+
+.tool-block:hover {
+    box-shadow: 0 4px 18px rgba(173,2,2,0.13);
+    transform: scale(1.01);
+}
+
+.tool-block h3 {
+    color: #00bfff;
+    font-family: 'Montserrat', Arial, sans-serif;
+    margin-bottom: 8px;
+    font-size: 1.08em;
+}
+
+.tool-link {
+    color: #00bfff;
+    text-decoration: none;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 10px;
+    font-size: 1em;
+    transition: color 0.2s;
+}
+
+.tool-link:hover {
+    color: #ad0202;
+    text-decoration: underline;
+}
+
+.tool-sub {
+    display: block;
+    font-size: 0.98em;
+    color: #add8e6;
+    margin-bottom: 6px;
 }
 
 footer {
@@ -311,6 +284,18 @@ footer a {
     font-weight: bold;
 }
 
+@media (max-width: 900px) {
+    .tool-list {
+        flex-direction: column;
+        gap: 8px;
+    }
+    .tool-block {
+        min-width: 0;
+        border-radius: 12px;
+        padding: 12px 4px;
+        margin-right: 0;
+    }
+}
 
 @media (max-width: 768px) {
     header {
@@ -335,44 +320,29 @@ footer a {
         padding: 10px 4px;
         margin-bottom: 10px;
     }
-    .video-gallery {
+    .tool-list {
         flex-direction: column;
         gap: 8px;
     }
-    .video-gallery iframe {
-        height: 170px;
-        min-width: 0;
-        border-radius: 8px;
-    }
-    .discord-widget-container {
-        max-width: 100%;
-        height: 230px;
+    .tool-block {
+        padding: 10px 6px;
+        border-radius: 10px;
     }
 }
-
 
 @media (max-width: 480px) {
     .headline {
         font-size: 1.3em;
     }
-    .aarr-title {
-        font-size: 1.1em;
-    }
-    .activity-title {
-        font-size: 1em;
-    }
-    .discord-btn {
-        font-size: 0.95em;
-        padding: 7px 14px;
-        border-radius: 7px;
-    }
-    .video-gallery iframe {
-        height: 120px;
-        min-width: 0;
-        border-radius: 6px;
-    }
     main {
         padding: 6px 1px 10px 1px;
+    }
+    .tool-block h3 {
+        font-size: 0.98em;
+    }
+    .tool-block {
+        padding: 8px 2px;
+        border-radius: 7px;
     }
 }
 </style>
