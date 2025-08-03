@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <title>AARR Dev</title>
-  <link rel="stylesheet" href="style.css">
   <meta name="description" content="AAEE">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#a9ceec">
@@ -14,9 +13,9 @@
   <meta property="og:site_name" content="">
   <meta property="og:image" content="https://i.imgur.com/0uXXNwP.png">
   <link rel="icon" type="image/png" href="https://i.imgur.com/9JD9TMF.png">
-
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
   <style>
     body {
       margin: 0;
@@ -36,12 +35,11 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      border-radius: 0;
       box-sizing: border-box;
       transition: box-shadow 0.3s, transform 0.2s;
       z-index: 10;
       position: sticky;
-    
+     
     }
 
     nav ul {
@@ -114,6 +112,25 @@
       font-weight: bold;
     }
 
+    .responsive-iframe {
+      position: relative;
+      width: 100%;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      margin-top: 20px;
+      border-radius: 10px;
+    }
+
+    .responsive-iframe iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
     footer {
       background-color: rgb(71, 71, 71);
       padding: 20px 0;
@@ -146,14 +163,17 @@
       }
 
       main {
-        padding: 16px 4px 18px 4px;
-        border-radius: 10px;
+        padding: 20px 10px;
+        border-radius: 12px;
       }
 
       .white-background {
+        padding: 12px 8px;
         border-radius: 12px;
-        padding: 10px 4px;
-        margin-bottom: 10px;
+      }
+
+      .headline {
+        font-size: 1.6em;
       }
     }
 
@@ -162,8 +182,18 @@
         font-size: 1.3em;
       }
 
+      nav a {
+        font-size: 1em;
+        padding: 5px 6px;
+      }
+
       main {
-        padding: 6px 1px 10px 1px;
+        padding: 12px 6px;
+      }
+
+      .white-background {
+        padding: 8px 4px;
+        margin-bottom: 12px;
       }
     }
   </style>
@@ -236,7 +266,9 @@
         <p>④"send DM"またはEnterで送信</p>
         <img src="https://i.imgur.com/H9QNrtL.png" alt="送信完了">
 
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/xHvjaSK3D98?si=q1404o9pTKkd_Por" title="YouTube video player" allowfullscreen></iframe>
+        <div class="responsive-iframe">
+          <iframe src="https://www.youtube.com/embed/xHvjaSK3D98?si=q1404o9pTKkd_Por" title="YouTube video player" allowfullscreen></iframe>
+        </div>
       </article>
     </div>
   </main>
@@ -271,4 +303,3 @@
   </script>
 </body>
 </html>
-
