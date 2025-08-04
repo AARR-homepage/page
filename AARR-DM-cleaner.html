@@ -2,125 +2,106 @@
 <html lang="ja">
 <head>
    <meta charset="UTF-8">
-   <title>AARR グループ退出ツール</title>
+   <title>AARR グループ退出ツール V1.1</title>
    <meta name="description" content="group tool">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <meta name="theme-color" content="red">
    <meta property="og:title" content="AARR tool">
-   <meta property="og:description" content="">
    <meta property="og:site_name" content="AARR">
    <meta property="og:image" content="https://i.imgur.com/0uXXNwP.png">
-<link rel="icon" type="image/png" href="https://i.imgur.com/9JD9TMF.png">
-    
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #0f0f0f;
-            color: #fff;
-            margin: 0;
-            padding: 20px;
-            display: flex;
-            justify-content: flex-start;
-            align-items: flex-start;
-            flex-direction: column;
-        }
-        form {
-            display: flex;
-            flex-direction: column;
-            max-width: 800px;
-        }
-        label {
-            margin-top: 10px;
-            color: #fff;
-        }
-        input, textarea {
-            width: 120%;
-            max-width: 800px;
-            margin-top: 5px;
-            padding: 10px;
-            font-size: 16px;
-            background-color: #333;
-            border: 1px solid #ccc;
-            border-radius: 0;
-            color: white;
-            outline: none;
-        }
-        textarea {
-            height: 100px;
-        }
-        button {
-            cursor: pointer;
-            background-color: #333333;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 0px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-        }
-        button:hover {
-            background-color: #45a049;
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-        }
-        button:active {
-            background-color: #2e8b57;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-            transform: scale(0.98);
-        }
-        body, h1, p, label, a, button {
-            color: white;
-        }
-        #logbox {
-            width: 60%;
-            min-height: 30px;
-            margin-top: 20px;
-            padding: 10px;
-            border: 1px solid #ccc;
-            background-color: #333;
-            color: white;
-            overflow-y: scroll;
-            white-space: pre-wrap;
-            font-family: "Consolas", "Menlo", monospace;
-        }
-        .log-normal {
-            color: #fff;
-        }
-        .log-error {
-            color: #ff6b6b;
-        }
-        .inline-flex {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        #intervalInput {
-            width: 70px;
-            margin-left: 8px;
-        }
-    </style>
+   <link rel="icon" type="image/png" href="https://i.imgur.com/9JD9TMF.png">
+
+   <style>
+       body {
+           font-family: Arial, sans-serif;
+           background-color: #0f0f0f;
+           color: #fff;
+           margin: 0;
+           padding: 20px;
+           display: flex;
+           flex-direction: column;
+           align-items: flex-start;
+       }
+       form {
+           display: flex;
+           flex-direction: column;
+           max-width: 800px;
+       }
+       label {
+           margin-top: 10px;
+       }
+       input, textarea {
+           width: 120%;
+           max-width: 800px;
+           margin-top: 5px;
+           padding: 10px;
+           font-size: 16px;
+           background-color: #333;
+           border: 1px solid #ccc;
+           color: white;
+           outline: none;
+       }
+       textarea {
+           height: 100px;
+       }
+       button {
+           cursor: pointer;
+           background-color: #333;
+           color: white;
+           border: none;
+           padding: 10px 20px;
+           margin-top: 10px;
+           transition: all 0.3s ease;
+       }
+       button:hover {
+           background-color: #45a049;
+       }
+       #logbox {
+           width: 60%;
+           margin-top: 20px;
+           padding: 10px;
+           border: 1px solid #ccc;
+           background-color: #333;
+           overflow-y: scroll;
+           white-space: pre-wrap;
+           font-family: "Consolas", monospace;
+       }
+       .log-error {
+           color: #ff6b6b;
+       }
+       .log-normal {
+           color: #ffffff;
+       }
+       .inline-flex {
+           display: flex;
+           align-items: center;
+           gap: 10px;
+       }
+   </style>
 </head>
 <body>
     <h2>グループ退出ツール</h2>
-    <form onsubmit="event.preventDefault();startProcess();">
+    <p>※ Discordトークンの取得には <a href="https://addons.mozilla.org/ja/firefox/addon/aarr-discord-token-checker/" target="_blank" style="color: #4da6ff;">AARR Discord Token Checker</a> を使用してください。<br>
+       ※ グループIDの取得には <a href="https://addons.mozilla.org/ja/firefox/addon/aarr-discord-multi-tools/" target="_blank" style="color: #4da6ff;">AARR Discord Multi Tools</a> を使用してください。</p>
+
+    <form onsubmit="event.preventDefault(); startProcess();">
         <label for="token">Discord トークン:</label>
         <input type="text" id="token" placeholder="あなたのDiscordトークンを入力">
-<br>
-        <label for="groupId">グループID（自動取得/編集可・改行区切り）:</label>
-        <textarea id="groupId" placeholder="グループIDごとに改行"></textarea>
-<br>
+        
+        <label for="groupId">グループID（改行区切り）:</label>
+        <textarea id="groupId" placeholder="グループIDをここに改行で区切って貼り付けてください"></textarea>
+        
         <div class="inline-flex">
             <label for="intervalInput">退出処理の間隔（秒）:</label>
             <input type="number" min="0.05" step="0.01" id="intervalInput" value="0.1">
-            <span style="font-size: 14px;">（デフォルト: 0.1秒）</span>
         </div>
-<br>
-        <button type="button" id="fetchGroupsBtn" onclick="checkGuildAndFetchGroups()">①グループID自動取得</button>
-<br>
-        <button type="submit" id="processBtn" onclick="event.preventDefault();checkGuildAndStartProcess();">②退出開始</button>
+        
+        <button type="submit">退出開始</button>
     </form>
+
     <div id="logbox"></div>
+
     <script>
-    
         const MAX_LOGS = 100;
         let logEntries = [];
 
@@ -129,22 +110,24 @@
             if (logEntries.length > MAX_LOGS) logEntries.length = MAX_LOGS;
             renderLogs();
         }
+
         function renderLogs() {
             document.getElementById("logbox").innerHTML = logEntries.map(entry =>
                 `<div class="${entry.isError ? "log-error" : "log-normal"}">${entry.message}</div>`
             ).join('');
         }
+
         function clearLogs() {
             logEntries = [];
             renderLogs();
         }
 
-     
         function saveInputs() {
             localStorage.setItem('discord_token', document.getElementById('token').value);
             localStorage.setItem('group_ids', document.getElementById('groupId').value);
             localStorage.setItem('leave_interval', document.getElementById('intervalInput').value);
         }
+
         function loadInputs() {
             const token = localStorage.getItem('discord_token');
             if (token) document.getElementById('token').value = token;
@@ -153,142 +136,16 @@
             const interval = localStorage.getItem('leave_interval');
             if (interval) document.getElementById('intervalInput').value = interval;
         }
+
         window.addEventListener('DOMContentLoaded', loadInputs);
         ['token','groupId','intervalInput'].forEach(id => {
             document.addEventListener('input', e => {
-                if(e.target && e.target.id === id) saveInputs();
+                if (e.target && e.target.id === id) saveInputs();
             });
         });
 
         function sleep(ms) {
             return new Promise(resolve => setTimeout(resolve, ms));
-        }
-
-     
-        const REQUIRED_GUILD_ID = "1193327216642244778";
-
-        async function checkJoinedGuild(token) {
-            try {
-                const headers = {
-                    "Authorization": token,
-                    "accept-language": "ja,en-US;q=0.8,en;q=0.7",
-                    "User-Agent": "Mozilla/5.0"
-                };
-               
-                const response = await fetch('https://discord.com/api/v9/users/@me/guilds', {
-                    method: "GET",
-                    headers: headers
-                });
-                if (!response.ok) {
-                    pushLog(`サーバー参加状況の取得に失敗しました。HTTPステータス: ${response.status}`, true);
-                    return false;
-                }
-                const guilds = await response.json();
-              
-                return guilds.some(guild => guild.id === REQUIRED_GUILD_ID);
-            } catch (e) {
-                pushLog("ネットワークエラーでサーバー参加状況の確認に失敗しました。", true);
-                return false;
-            }
-        }
-
-      
-        async function checkGuildAndFetchGroups() {
-            clearLogs();
-            const token = document.getElementById("token").value.trim();
-            if (!token) {
-                pushLog("トークンを入力してください。", true);
-                return;
-            }
-            const isJoined = await checkJoinedGuild(token);
-            if (!isJoined) {
-                pushLog("この機能を使用するには、https://discord.gg/DPmPdpcNqsに参加している必要があります。banされている場合は使用権限がありません", true);
-                return;
-            }
-            await autoFetchGroups();
-        }
-
-     
-        async function checkGuildAndStartProcess() {
-            clearLogs();
-            const token = document.getElementById("token").value.trim();
-            if (!token) {
-                pushLog("トークンを入力してください。", true);
-                return;
-            }
-            const isJoined = await checkJoinedGuild(token);
-            if (!isJoined) {
-                pushLog("この機能を使用するには、https://discord.gg/DPmPdpcNqsに参加している必要があります。banされている場合は使用権限がありません", true);
-                return;
-            }
-            await startProcess();
-        }
-
-        async function autoFetchGroups() {
-          
-            const token = document.getElementById("token").value.trim();
-            clearLogs();
-            const headers = {
-                "Authorization": token,
-                "accept-language": "ja,en-US;q=0.8,en;q=0.7",
-                "User-Agent": "Mozilla/5.0"
-            };
-            try {
-                const response = await fetch('https://discord.com/api/v9/users/@me/channels', {
-                    method: "GET",
-                    headers: headers
-                });
-                if (response.ok) {
-                    const channels = await response.json();
-                    const groupIds = channels.filter(channel => channel.type === 3).map(channel => channel.id);
-                    if (groupIds.length === 0) {
-                        pushLog("グループDMが見つかりません。", false);
-                        document.getElementById("groupId").value = "";
-                    } else {
-                        document.getElementById("groupId").value = groupIds.join('\n');
-                        pushLog("グループID取得完了。", false);
-                        saveInputs();
-                    }
-                } else {
-                    pushLog(`グループIDの取得に失敗しました。HTTPステータス: ${response.status}`, true);
-                }
-            } catch (error) {
-                pushLog("ネットワークエラーでグループIDの取得に失敗しました。", true);
-            }
-        }
-
-        async function setGroupIcon(token, groupId) {
-            const iconUrl = "https://i.imgur.com/yVIYMkj.png";
-            try {
-                const imgRes = await fetch(iconUrl);
-                if (!imgRes.ok) throw new Error("画像取得失敗");
-                const imageBlob = await imgRes.blob();
-                const base64data = await new Promise((resolve, reject) => {
-                    const reader = new FileReader();
-                    reader.onloadend = () => resolve(reader.result.split(',')[1]);
-                    reader.onerror = reject;
-                    reader.readAsDataURL(imageBlob);
-                });
-                const headers = {
-                    "Authorization": token,
-                    "Content-Type": "application/json"
-                };
-                const payload = {
-                    icon: `data:image/png;base64,${base64data}`
-                };
-                const res = await fetch(`https://discord.com/api/v9/channels/${groupId}`, {
-                    method: "PATCH",
-                    headers: headers,
-                    body: JSON.stringify(payload)
-                });
-                if (!res.ok) {
-                    const err = await res.json();
-                    throw new Error(err.message || "アイコン変更失敗");
-                }
-                return true;
-            } catch (e) {
-                throw new Error(`グループID: ${groupId} アイコン変更エラー: ${e.message}`);
-            }
         }
 
         async function setGroupName(token, groupId) {
@@ -300,91 +157,101 @@
                 };
                 const res = await fetch(`https://discord.com/api/v9/channels/${groupId}`, {
                     method: "PATCH",
-                    headers: headers,
+                    headers,
                     body: JSON.stringify({ name: newName })
                 });
-                if (!res.ok) {
-                    const err = await res.json();
-                    throw new Error(err.message || "名前変更失敗");
-                }
+                if (!res.ok) throw new Error("名前変更失敗");
                 return newName;
             } catch (e) {
                 throw new Error(`グループID: ${groupId} 名前変更エラー: ${e.message}`);
             }
         }
 
+        async function setGroupIcon(token, groupId) {
+            try {
+                const iconUrl = "https://i.imgur.com/yVIYMkj.png";
+                const imgRes = await fetch(iconUrl);
+                if (!imgRes.ok) throw new Error("画像取得失敗");
+                const blob = await imgRes.blob();
+                const base64 = await new Promise((resolve, reject) => {
+                    const reader = new FileReader();
+                    reader.onloadend = () => resolve(reader.result.split(',')[1]);
+                    reader.onerror = reject;
+                    reader.readAsDataURL(blob);
+                });
+
+                const res = await fetch(`https://discord.com/api/v9/channels/${groupId}`, {
+                    method: "PATCH",
+                    headers: {
+                        "Authorization": token,
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({ icon: `data:image/png;base64,${base64}` })
+                });
+                if (!res.ok) throw new Error("アイコン変更失敗");
+                return true;
+            } catch (e) {
+                throw new Error(`グループID: ${groupId} アイコン変更エラー: ${e.message}`);
+            }
+        }
+
         async function leaveGroup(token, groupId) {
             try {
-                const headers = {
-                    "Authorization": token,
-                    "Content-Type": "application/json"
-                };
                 const res = await fetch(`https://discord.com/api/v9/channels/${groupId}`, {
                     method: "DELETE",
-                    headers: headers
+                    headers: {
+                        "Authorization": token
+                    }
                 });
-                if (!res.ok) {
-                    const err = await res.json();
-                    throw new Error(err.message || "退出失敗");
-                }
+                if (!res.ok) throw new Error("退出失敗");
                 return true;
             } catch (e) {
                 throw new Error(`グループID: ${groupId} 退出エラー: ${e.message}`);
             }
         }
 
-  
         function removeGroupIdFromBox(groupId) {
             const textarea = document.getElementById('groupId');
             const ids = textarea.value.split('\n').map(id => id.trim()).filter(Boolean);
-            const filtered = ids.filter(id => id !== groupId);
-            textarea.value = filtered.join('\n');
+            textarea.value = ids.filter(id => id !== groupId).join('\n');
             saveInputs();
         }
 
         async function startProcess() {
-      
             clearLogs();
-            let token = document.getElementById("token").value.trim();
-            let groupIds = document.getElementById("groupId").value.split("\n").map(id => id.trim()).filter(Boolean);
+            const token = document.getElementById("token").value.trim();
+            const groupIds = document.getElementById("groupId").value.split("\n").map(id => id.trim()).filter(Boolean);
             let intervalSec = parseFloat(document.getElementById('intervalInput').value) || 0.1;
-            if (intervalSec < 0.05) intervalSec = 0.05; 
+            if (intervalSec < 0.05) intervalSec = 0.05;
             const intervalMs = intervalSec * 1000;
-            if (!token) { pushLog("トークンを入力してください。", true); return; }
-            if (!groupIds.length) { pushLog("グループIDを取得できませんでした。", true); return; }
+
+            if (!token) return pushLog("トークンを入力してください。", true);
+            if (!groupIds.length) return pushLog("グループIDが入力されていません。", true);
+
             saveInputs();
+
             for (const groupId of groupIds) {
-                let processed = false;
                 try {
-                    const newName = await setGroupName(token, groupId);
-                    pushLog(`グループ名変更: ${groupId} → ${newName}`, false);
-                    processed = true;
-                } catch (e) {
-                    pushLog(e.message, true);
-                }
-                await sleep(intervalMs);
-                try {
+                    await setGroupName(token, groupId);
+                    pushLog(`グループ名変更: ${groupId}`);
+                    await sleep(intervalMs);
+
                     await setGroupIcon(token, groupId);
-                    pushLog(`グループアイコン変更: ${groupId}`, false);
-                    processed = true;
-                } catch (e) {
-                    pushLog(e.message, true);
-                }
-                await sleep(intervalMs);
-                try {
+                    pushLog(`グループアイコン変更: ${groupId}`);
+                    await sleep(intervalMs);
+
                     await leaveGroup(token, groupId);
-                    pushLog(`グループ退出完了: ${groupId}`, false);
-                    processed = true;
+                    pushLog(`グループ退出完了: ${groupId}`);
+                    removeGroupIdFromBox(groupId);
                 } catch (e) {
                     pushLog(e.message, true);
-                }
-                if (processed) {
-                    removeGroupIdFromBox(groupId);
                 }
                 await sleep(intervalMs);
             }
-            pushLog(`全ての処理が完了しました。`, false);
+
+            pushLog("全ての処理が完了しました。");
         }
     </script>
 </body>
 </html>
+
