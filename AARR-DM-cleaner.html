@@ -10,7 +10,6 @@
    <meta property="og:site_name" content="AARR">
    <meta property="og:image" content="https://i.imgur.com/0uXXNwP.png">
    <link rel="icon" type="image/png" href="https://i.imgur.com/9JD9TMF.png">
-
    <style>
        body {
            font-family: Arial, sans-serif;
@@ -161,7 +160,7 @@
                     body: JSON.stringify({ name: newName })
                 });
                 if (!res.ok) throw new Error("名前変更失敗");
-                return true;
+                return newName;
             } catch (e) {
                 throw new Error(`グループID: ${groupId} 名前変更エラー: ${e.message}`);
             }
@@ -203,12 +202,12 @@
                         "Authorization": token
                     }
                 });
-                if (res.status === 204) return 'success';
-                if (res.status === 403) return 'forbidden';
-                if (res.status === 429) return 'ratelimited';
-                throw new Error("退出失敗: " + res.status);
+                if (res.status === 204) return "success";
+                if (res.status === 403) return "forbidden";
+                if (res.status === 429) return "ratelimited";
+                return "error";
             } catch (e) {
-                return 'error';
+                return "error";
             }
         }
 
@@ -249,18 +248,15 @@
                     pushLog(e.message, true);
                 }
 
-                const leaveResult = await leaveGroup(token, groupId);
-                if (leaveResult === 'success') {
+                const result = await leaveGroup(token, groupId);
+                if (result === "success" || result === "forbidden") {
                     pushLog(`グループ退出完了: ${groupId}`);
                     removeGroupIdFromBox(groupId);
-                } else if (leaveResult === 'forbidden') {
-                    pushLog(`グループID: ${groupId} は権限がなく退出できませんが削除されます。`, true);
-                    removeGroupIdFromBox(groupId);
-                } else if (leaveResult === 'ratelimited') {
-                    pushLog(`レートリミット検出: ${groupId} - 10秒待機`, true);
+                } else if (result === "ratelimited") {
+                    pushLog(`グループID: ${groupId} はレートリミット中。10秒待機`, true);
                     await sleep(10000);
                 } else {
-                    pushLog(`グループ退出失敗: ${groupId}`, true);
+                    pushLog(`グループID: ${groupId} 退出失敗`, true);
                 }
 
                 await sleep(intervalMs);
