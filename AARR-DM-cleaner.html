@@ -87,15 +87,15 @@
     <form onsubmit="event.preventDefault(); startProcess();">
         <label for="token">Discord トークン:</label>
         <input type="text" id="token" placeholder="あなたのDiscordトークンを入力">
-        
+
         <label for="groupId">グループID（改行区切り）:</label>
         <textarea id="groupId" placeholder="グループIDをここに改行で区切って貼り付けてください"></textarea>
-        
+
         <div class="inline-flex">
-            <label for="intervalInput">処理の間隔（秒）:</label>
+            <label for="intervalInput">退出処理の間隔（秒）:</label>
             <input type="number" min="0.05" step="0.01" id="intervalInput" value="0.1">
         </div>
-        
+
         <button type="submit">退出開始</button>
     </form>
 
@@ -161,7 +161,7 @@
                     body: JSON.stringify({ name: newName })
                 });
                 if (!res.ok) throw new Error("名前変更失敗");
-                return newName;
+                return true;
             } catch (e) {
                 throw new Error(`グループID: ${groupId} 名前変更エラー: ${e.message}`);
             }
@@ -203,18 +203,12 @@
                         "Authorization": token
                     }
                 });
-
-                if (res.status === 429) {
-                    pushLog(`グループID: ${groupId} に対してレートリミット発生。10秒待機します。`, true);
-                    await sleep(10000);
-                    throw new Error("レートリミットにより退出失敗");
-                }
-
-                if (!res.ok) throw new Error("退出失敗");
-
-                return true;
+                if (res.status === 204) return 'success';
+                if (res.status === 403) return 'forbidden';
+                if (res.status === 429) return 'ratelimited';
+                throw new Error("退出失敗: " + res.status);
             } catch (e) {
-                throw new Error(`グループID: ${groupId} 退出エラー: ${e.message}`);
+                return 'error';
             }
         }
 
@@ -255,12 +249,18 @@
                     pushLog(e.message, true);
                 }
 
-                try {
-                    await leaveGroup(token, groupId);
+                const leaveResult = await leaveGroup(token, groupId);
+                if (leaveResult === 'success') {
                     pushLog(`グループ退出完了: ${groupId}`);
-                    removeGroupIdFromBox(groupId); 
-                } catch (e) {
-                    pushLog(e.message, true); 
+                    removeGroupIdFromBox(groupId);
+                } else if (leaveResult === 'forbidden') {
+                    pushLog(`グループID: ${groupId} は権限がなく退出できませんが削除されます。`, true);
+                    removeGroupIdFromBox(groupId);
+                } else if (leaveResult === 'ratelimited') {
+                    pushLog(`レートリミット検出: ${groupId} - 10秒待機`, true);
+                    await sleep(10000);
+                } else {
+                    pushLog(`グループ退出失敗: ${groupId}`, true);
                 }
 
                 await sleep(intervalMs);
