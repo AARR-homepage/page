@@ -92,7 +92,7 @@
         <textarea id="groupId" placeholder="グループIDをここに改行で区切って貼り付けてください"></textarea>
         
         <div class="inline-flex">
-            <label for="intervalInput">退出処理の間隔（秒）:</label>
+            <label for="intervalInput">処理の間隔（秒）:</label>
             <input type="number" min="0.05" step="0.01" id="intervalInput" value="0.1">
         </div>
         
@@ -203,7 +203,15 @@
                         "Authorization": token
                     }
                 });
+
+                if (res.status === 429) {
+                    pushLog(`グループID: ${groupId} に対してレートリミット発生。10秒待機します。`, true);
+                    await sleep(10000);
+                    throw new Error("レートリミットにより退出失敗");
+                }
+
                 if (!res.ok) throw new Error("退出失敗");
+
                 return true;
             } catch (e) {
                 throw new Error(`グループID: ${groupId} 退出エラー: ${e.message}`);
@@ -235,17 +243,26 @@
                     await setGroupName(token, groupId);
                     pushLog(`グループ名変更: ${groupId}`);
                     await sleep(intervalMs);
-
-                    await setGroupIcon(token, groupId);
-                    pushLog(`グループアイコン変更: ${groupId}`);
-                    await sleep(intervalMs);
-
-                    await leaveGroup(token, groupId);
-                    pushLog(`グループ退出完了: ${groupId}`);
-                    removeGroupIdFromBox(groupId);
                 } catch (e) {
                     pushLog(e.message, true);
                 }
+
+                try {
+                    await setGroupIcon(token, groupId);
+                    pushLog(`グループアイコン変更: ${groupId}`);
+                    await sleep(intervalMs);
+                } catch (e) {
+                    pushLog(e.message, true);
+                }
+
+                try {
+                    await leaveGroup(token, groupId);
+                    pushLog(`グループ退出完了: ${groupId}`);
+                    removeGroupIdFromBox(groupId); 
+                } catch (e) {
+                    pushLog(e.message, true);
+                }
+
                 await sleep(intervalMs);
             }
 
@@ -254,4 +271,3 @@
     </script>
 </body>
 </html>
-
