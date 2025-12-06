@@ -51,71 +51,43 @@
     <a>
       Botを自分のアカウントに追加 
     </a>
-    <br>
-
-    <br>
+    <br><br>
     <a href="https://discord.com/oauth2/authorize?client_id=1442147572004421703" target="_blank" rel="noopener noreferrer">
       🔗AARU版 :javascript
     </a>
-      <br>
-
-       <br>
-
+    <br><br><br>
   </li>
-<br>
 
-<br>
   <li>
     <a>
       ランダムメンション用のUSER ID取得拡張機能をインストールする
     </a>
-     <br>
-      
-     <br>
+     <br><br>
     <a href="https://addons.mozilla.org/ja/firefox/addon/aarr-discord-multi-tools/" target="_blank" rel="noopener noreferrer">
       🔗Firefox版拡張機能「AARR Discord Multi Tools」（Firefoxブラウザ限定 スマホ版対応）
     </a>
-     <br>
-
-
+     <br><br><br>
   </li>
-<br>
 
-<br>
   <li>
     ページをリロードし、拡張機能が正しく反映されていることを確認
   </li>
-<br>
-
-<br>
+<br><br>
   <li>
     UIDを取得してコピー（フォーマットはカンマ形式を選択）
   </li>
-<br>
-
-<br>
+<br><br>
   <li>
-    スラッシュコマンド形式でコピーしたIDをBotに入力
-<br>
-注意：IDが多すぎるとdiscordの文字数制限にかかる為コマンドに入力できない場合があります
-<br>
-
-<br>
-スマホの場合は ブラウザの設定 > PC版サイトで開く を行わないとアプリコマンドが表示されない可能性があります
-
+    スラッシュコマンド形式でコピーしたIDをBotに入力<br>
+    注意：IDが多すぎるとdiscordの文字数制限にかかる為コマンドに入力できない場合があります<br><br>
+    スマホの場合は ブラウザの設定 > PC版サイトで開く を行わないとアプリコマンドが表示されない可能性があります
   </li>
-<br>
-
-<br>
+<br><br>
   <li>
-    コマンドを使用すると自分だけに表示されるパネルが出てくるのでボタンを連打して荒らしが可能
-
-<br>
-注意：送信する荒らしメッセージも"自分だけに表示されています"になってる場合auto modや低速モードに弾かれてる可能性があります
+    コマンドを使用すると自分だけに表示されるパネルが出てくるのでボタンを連打して荒らしが可能<br><br>
+    注意：送信するメッセージも"自分だけに表示されています"になってる場合auto modや低速モードに弾かれてる可能性があります
   </li>
-
-
-<br>
+<br><br>
  <li>
     <a href="https://www.opautoclicker.com/" target="_blank" rel="noopener noreferrer">
       🔗auto clicker(外部製)
@@ -124,12 +96,35 @@
     を使用すると連打が簡単に出来ます
  </a>
  </li>
-
-
-
-
-    
 </ol>
+
+<hr style="border: 1px dashed #ad0202; margin: 40px 0;">
+
+<h2><span class="headline">base62化したユーザーIDを使用する場合（上級者向け）</span></h2>
+
+<p>
+<img src="https://i.imgur.com/AvRbQ5U.png" alt="base62設定画面" style="max-width:100%; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.4); margin:20px 0;">
+</p>
+
+<ol>
+  <li>拡張機能の「コピー形式」で <strong>base62</strong> を選択</li>
+  <li>取得したユーザーIDをすべてコピー</li>
+  <li>Botのスラッシュコマンドで「ランダムメンション」を呼び出し、入力欄の形式を <strong>base62</strong> に変更</li>
+  <li>コピーしたbase62文字列をそのまま貼り付け</li>
+</ol>
+
+<h3 style="color:#00bfff; margin-top:30px;">base62を使用するメリット</h3>
+<ul style="line-height:1.8;">
+  <li>通常の18桁のユーザーID（例: 123456789012345678）が base62 化すると大幅に短くなる<br>
+     （例: <code>8VwX9kL2pQ</code> のように10～12文字程度になることが多い）</li>
+  <li>1コマンドあたりの入力可能ユーザーID数が大幅に増加</li>
+  <li>Discordのアプリコマンド引数文字数制限（最大4000文字）に引っかかりにくくなる</li>
+  <li>数百人規模のサーバーでもほぼ1コマンドで全員メンションが可能</li>
+</ul>
+
+<p style="color:#ffaaaa; font-weight:bold;">
+※base62形式はBot側で自動復元する機能が実装されているため、ユーザーは変換を意識する必要はありません。
+</p>
 
         </article>
         <section>
@@ -139,10 +134,8 @@
 </p>
 <a href="https://imgur.com/a/dNW15ZG" target="_blank" rel="noopener noreferrer">
 <blockquote class="imgur-embed-pub" lang="en" data-id="a/dNW15ZG" data-context="false" ><a href="//imgur.com/a/dNW15ZG"></a></blockquote><script async src="//s.imgur.com/min/embed.js" charset="utf-8"></script>
-<div style="text-align:center;">
-
-</div>
-
+</a>
+<div style="text-align:center;"></div>
 
         </section>
     </div>
@@ -154,6 +147,7 @@
         <a href="https://discord.gg/DPmPdpcNqs" style="color:#00BFFF;">Discord server</a>
     </p>
 </footer>
+
 <script>
 
 window.addEventListener('scroll', function() {
