@@ -100,31 +100,45 @@
 
 <hr style="border: 1px dashed #ad0202; margin: 40px 0;">
 
-<h2><span class="headline">base62化したユーザーIDを使用する場合（上級者向け）</span></h2>
+<h2><span class="headline">base62化ユーザーIDを使用する場合（推奨）</span></h2>
 
-<p>
-<img src="https://i.imgur.com/AvRbQ5U.png" alt="base62設定画面" style="max-width:100%; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.4); margin:20px 0;">
-</p>
+
 
 <ol>
   <li>拡張機能の「コピー形式」で <strong>base62</strong> を選択</li>
+
+<p>
+<img src="https://i.imgur.com/WCTn7ag.png" alt="base62設定画面" style="max-width:100%; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.4); margin:20px 0;">
+</p>
+
   <li>取得したユーザーIDをすべてコピー</li>
   <li>Botのスラッシュコマンドで「ランダムメンション」を呼び出し、入力欄の形式を <strong>base62</strong> に変更</li>
+<p>
+<img src="https://i.imgur.com/AvRbQ5U.png" alt="base62設定画面" style="max-width:100%; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.4); margin:20px 0;">
+</p>
+    
   <li>コピーしたbase62文字列をそのまま貼り付け</li>
-</ol>
-
-<h3 style="color:#00bfff; margin-top:30px;">base62を使用するメリット</h3>
-<ul style="line-height:1.8;">
-  <li>通常の18桁のユーザーID（例: 123456789012345678）が base62 化すると大幅に短くなる<br>
-     （例: <code>8VwX9kL2pQ</code> のように10～12文字程度になることが多い）</li>
-  <li>1コマンドあたりの入力可能ユーザーID数が大幅に増加</li>
-  <li>Discordのアプリコマンド引数文字数制限（最大4000文字）に引っかかりにくくなる</li>
-  <li>数百人規模のサーバーでもほぼ1コマンドで全員メンションが可能</li>
-</ul>
 
 <p style="color:#ffaaaa; font-weight:bold;">
-※base62形式はBot側で自動復元する機能が実装されているため、ユーザーは変換を意識する必要はありません。
+BOTが自動的にbase52化IDを復元し通常のランダムメンションになります
 </p>
+
+    
+</ol>
+
+
+            
+<h3 style="color:#00bfff; margin-top:30px;">base62化ユーザーIDを使用するメリット</h3>
+<ul style="line-height:1.8;">
+    
+  <li>通常の18桁のユーザーID（例: 123456789012345678）が base62 化すると大幅に短くなります<br>
+     （例: <code>8VwX9kL2pQ</code> のように10～12文字程度に）</li>
+    
+  <li>Discordのアプリコマンド引数文字数制限（最大4000文字）に引っかかりにくくなり</li>
+  <li>大規模のサーバーでもランダムメンションが可能になります</li>
+    
+</ul>
+
 
         </article>
         <section>
